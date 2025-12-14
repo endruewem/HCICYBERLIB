@@ -7,7 +7,7 @@
 /* --- HERO SECTION: Halaman Profil (Background Gradien Biru) --- */
 .hero.profile-page {
     /* Background gradien biru (konsisten dengan form pages) */
-    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+    background: url('assets/bg2.jpg') center center / cover no-repeat;
     
     min-height: 100vh;
     width: 100%;
@@ -81,7 +81,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: url('/assets/pp.jpg') center center;
+    background: url('assets/pp.jpg') center center;
     background-size: cover;
     /* background-color: #ccc; Warna abu-abu terang */
     border: 2px solid white;
