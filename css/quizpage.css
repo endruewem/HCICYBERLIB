@@ -7,7 +7,7 @@
 
 /* --- HERO SECTION: Halaman Quiz --- */
 .hero.quiz-page {
-    background: url('assets/bg2.jpg') center center / cover no-repeat;
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
     /* Background Solid Biru Gelap (konsisten dengan halaman Article) */
     background-color: #0d1b2a; 
     
@@ -101,7 +101,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: url('assets/pp.jpg') center center;
+    background: url('/assets/pp.jpg') center center;
     background-size: cover;
     /* background-color: #ccc; Warna abu-abu terang */
     border: 2px solid white;

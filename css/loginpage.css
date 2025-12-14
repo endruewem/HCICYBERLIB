@@ -3,7 +3,7 @@
 /* Background dan layout halaman login */
 .hero.login-page {
     /* Background gradien biru (ditemukan di gambar) */
-    background: url('assets/bg2.jpg') center center / cover no-repeat;
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
 
     
     /* Atur agar section mengisi seluruh tinggi layar */
