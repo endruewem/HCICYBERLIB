@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Forum</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/forumpage.css">
+</head>
+<body>
+
+    <header>
+                <a href="html/mainpage.html" class="logo-link">
+            <div class="logo-container">
+                <div class="logo-icon">C</div> 
+                <div class="logo-text">CYBERLIB</div>
+            </div>
+        </a>
+
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html">Article</a></li>
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html" class="active">Forum</a></li> 
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero forum-page">
+        <div class="content-container">
+            <h1 class="page-title">Forum</h1>
+            
+            <a href="html/createforum.html" class="create-forum-btn">
+                <span class="plus-icon">+</span>
+                Make your forum!
+            </a>
+
+
+            <div class="forum-list">
+                
+                <a href="#" class="forum-thread-item">
+                    <div class="thread-icon" style="background-image: url('assets/for1.jpg');"></div>
+                    <div class="thread-info">
+                        <h2>Password Reuse and Account Security</h2>
+                        <p class="desc">Using the same password across multiple platforms significantly increases the risk of account compromise. Once one service is breached, other accounts may also become vulnerable. What strategies do you use to manage passwords securely?</p>
+                    </div>
+                </a>
+
+                <a href="#" class="forum-thread-item">
+                    <div class="thread-icon" style="background-image: url('assets/for2.jpg');"></div>
+                    <div class="thread-info">
+                        <h2>Public Wi-Fi Security Risks</h2>
+                        <p class="desc">Public Wi-Fi networks are convenient but often lack proper encryption. Attackers may intercept data transmitted over unsecured networks. How do you protect your information when using public Wi-Fi?</p>
+                    </div>
+                </a>
+                
+                <a href="#" class="forum-thread-item">
+                    <div class="thread-icon" style="background-image: url('assets/for3.jpg');"></div>
+                    <div class="thread-info">
+                        <h2>Two-Factor Authentication Effectiveness</h2>
+                        <p class="desc">Two-factor authentication adds an extra layer of security beyond passwords. However, some users still avoid enabling it. In your opinion, what prevents wider adoption of 2FA?</p>
+                    </div>
+                </a>
+
+                <a href="#" class="forum-thread-item">
+                    <div class="thread-icon" style="background-image: url('assets/for4.jpg');"></div>
+                    <div class="thread-info">
+                        <h2>Phishing Attacks in Daily Communication</h2>
+                        <p class="desc">Phishing attempts are becoming more sophisticated and harder to detect. Emails and messages can appear legitimate at first glance. What indicators do you usually check to identify phishing attempts?</p>
+                    </div>
+                </a>
+
+                <a href="#" class="forum-thread-item">
+                    <div class="thread-icon" style="background-image: url('assets/for5.jpg');"></div>
+                    <div class="thread-info">
+                        <h2>Data Privacy on Social Media Platforms</h2>
+                        <p class="desc">Social media platforms collect large amounts of user data. Understanding privacy settings is essential to limit data exposure. How often do you review and adjust your privacy settings?</p>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+
+
+
+    <script>
+const forumList = document.querySelector(".forum-list");
+const forums = JSON.parse(sessionStorage.getItem("forums") || "[]");
+
+forums.forEach(f => {
+    const a = document.createElement("a");
+    a.href = "#";
+    a.className = "forum-thread-item";
+
+    a.innerHTML = `
+        <div class="thread-icon" style="background-image: url('${f.authorPhoto}')"></div>
+        <div class="thread-info">
+            <h2>${f.title}</h2>
+            <p class="desc">${f.desc}</p>
+        </div>
+    `;
+
+    forumList.prepend(a);
+});
+</script>
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

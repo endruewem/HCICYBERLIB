@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "title": "Keamanan Data & Privasi",
+    "questions": [
+      {
+        "q": "Data seperti NIK dan nomor HP termasuk…?",
+        "options": ["Data publik", "Data umum", "Data pribadi", "Data bebas"],
+        "answer": 2
+      },
+      {
+        "q": "Kebocoran data bisa menyebabkan…",
+        "options": ["Kecepatan internet naik", "Penyalahgunaan identitas", "Akun bertambah", "Sistem lebih aman"],
+        "answer": 1
+      },
+      {
+        "q": "Privasi digital penting untuk melindungi…",
+        "options": ["Perangkat", "Identitas pengguna", "Jaringan", "Aplikasi"],
+        "answer": 1
+      },
+      {
+        "q": "Memberikan data pribadi ke situs tidak dikenal itu…",
+        "options": ["Aman", "Wajar", "Berisiko", "Dianjurkan"],
+        "answer": 2
+      },
+      {
+        "q": "Yang bertanggung jawab menjaga data pribadi adalah…",
+        "options": ["Pemerintah saja", "Perusahaan saja", "Pengguna", "Teman"],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Ancaman Siber",
+    "questions": [
+      {
+        "q": "Penipuan online yang menyamar sebagai pihak resmi disebut…",
+        "options": ["Spam", "Phishing", "Malware", "Virus"],
+        "answer": 1
+      },
+      {
+        "q": "Program berbahaya pada komputer disebut…",
+        "options": ["Firewall", "Antivirus", "Malware", "Update"],
+        "answer": 2
+      },
+      {
+        "q": "Serangan yang meminta tebusan setelah mengunci data disebut…",
+        "options": ["Trojan", "Phishing", "Ransomware", "Spyware"],
+        "answer": 2
+      },
+      {
+        "q": "Mengelabui korban untuk mencuri data disebut…",
+        "options": ["Hacking", "Cracking", "Social engineering", "Tracking"],
+        "answer": 2
+      },
+      {
+        "q": "Ancaman siber dapat menyebabkan kerugian…",
+        "options": ["Waktu saja", "Data dan uang", "Internet cepat", "Perangkat baru"],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Keamanan Akun & Autentikasi",
+    "questions": [
+      {
+        "q": "Password yang kuat berisi…",
+        "options": ["Nama", "Angka saja", "Kombinasi karakter", "Tanggal lahir"],
+        "answer": 2
+      },
+      {
+        "q": "Verifikasi tambahan selain password disebut…",
+        "options": ["Login ulang", "2FA", "CAPTCHA", "Firewall"],
+        "answer": 1
+      },
+      {
+        "q": "Menggunakan password sama di semua akun itu…",
+        "options": ["Praktis", "Aman", "Berisiko", "Dianjurkan"],
+        "answer": 2
+      },
+      {
+        "q": "Mengganti password secara berkala itu…",
+        "options": ["Tidak perlu", "Berbahaya", "Dianjurkan", "Dilarang"],
+        "answer": 2
+      },
+      {
+        "q": "Password sebaiknya dibagikan ke orang lain?",
+        "options": ["Ya", "Kadang-kadang", "Tidak", "Jika diminta"],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Internet & Media Sosial Aman",
+    "questions": [
+      {
+        "q": "Membagikan info pribadi berlebihan disebut…",
+        "options": ["Sharing", "Oversharing", "Tagging", "Upload"],
+        "answer": 1
+      },
+      {
+        "q": "Riwayat aktivitas online disebut…",
+        "options": ["Cache", "Cookies", "Jejak digital", "Log out"],
+        "answer": 2
+      },
+      {
+        "q": "Menghina orang lain di internet disebut…",
+        "options": ["Spam", "Hoaks", "Cyberbullying", "Phishing"],
+        "answer": 2
+      },
+      {
+        "q": "Akun media sosial sebaiknya diatur menjadi…",
+        "options": ["Publik", "Terbuka", "Privat", "Bebas"],
+        "answer": 2
+      },
+      {
+        "q": "Etika digital penting untuk menjaga…",
+        "options": ["Popularitas", "Keamanan", "Followers", "Kecepatan"],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Jaringan & Akses Internet Aman",
+    "questions": [
+      {
+        "q": "Wi-Fi gratis di tempat umum disebut…",
+        "options": ["Wi-Fi rumah", "Wi-Fi publik", "Wi-Fi pribadi", "Wi-Fi aman"],
+        "answer": 1
+      },
+      {
+        "q": "Wi-Fi publik aman untuk internet banking?",
+        "options": ["Ya", "Selalu", "Tidak", "Bebas"],
+        "answer": 2
+      },
+      {
+        "q": "Alat untuk mengamankan koneksi internet disebut…",
+        "options": ["Browser", "VPN", "Email", "Wi-Fi"],
+        "answer": 1
+      },
+      {
+        "q": "Website aman biasanya menggunakan…",
+        "options": ["HTTP", "WWW", "HTTPS", "FTP"],
+        "answer": 2
+      },
+      {
+        "q": "Risiko jaringan terbuka adalah…",
+        "options": ["Internet lambat", "Data dicuri", "Baterai boros", "Layar rusak"],
+        "answer": 1
+      }
+    ]
+  }
+]

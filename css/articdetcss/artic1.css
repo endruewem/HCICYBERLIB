@@ -1,0 +1,144 @@
+/* Kita perlu mengimpor variabel dari style.css jika ini adalah file terpisah */
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --mono-font: 'VT323', monospace;
+    --primary-blue: #4b89dc;
+}
+
+/* --- HERO SECTION: Halaman Detail Artikel --- */
+.hero.article-detail-page {
+    /* Background gradien biru (konsisten dengan Login dan Forum) */
+    background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+    
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Konten diselaraskan ke atas */
+    
+    padding-top: 120px; /* Jarak agar tidak tertutup navbar */
+    padding-bottom: 50px;
+}
+
+/* Kotak Konten Putih Besar */
+.article-content-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 750px;
+    width: 90%;
+    position: relative; /* Untuk posisi tombol kembali */
+}
+
+/* Tombol Kembali (←) */
+.back-btn {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #f1f7fe; /* Biru muda */
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #dee7f1;
+}
+
+.arrow-icon {
+    font-size: 20px;
+    color: #4b89dc;
+    display: block;
+    line-height: 1;
+}
+
+/* Gambar Utama Artikel */
+.article-image-container {
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.article-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Teks Artikel */
+.article-text {
+    color: #232136;
+}
+
+.article-date {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.article-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.article-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* --- Style Tambahan: Sorotan Navigasi dan Profil --- */
+/* Karena ini adalah file CSS yang sangat terpisah, kita tambahkan lagi style untuk profil & link aktif */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc; 
+    border: 2px solid white;
+}
+
+nav ul li a.active {
+    color: white !important;
+    text-decoration: underline; 
+    text-decoration-color: var(--primary-blue);
+    text-underline-offset: 4px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .article-content-box {
+        padding: 20px;
+    }
+    .back-btn {
+        top: 20px;
+        left: 20px;
+        width: 35px;
+        height: 35px;
+    }
+    .article-title {
+        font-size: 24px;
+    }
+    .article-text p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .article-title {
+        font-size: 20px;
+    }
+    .article-text p {
+        font-size: 14px;
+    }
+}

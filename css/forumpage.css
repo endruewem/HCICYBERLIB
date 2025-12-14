@@ -1,0 +1,180 @@
+/* Kita perlu mengimpor variabel dari style.css jika ini adalah file terpisah */
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --mono-font: 'VT323', monospace;
+    --primary-blue: #4b89dc;
+}
+
+/* --- HERO SECTION: Halaman Forum --- */
+.hero.forum-page {
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+    /* Background Solid Biru Gelap (konsisten dengan halaman konten lainnya) */
+    background-color: #0d1b2a; 
+    
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    
+    padding-top: 160px; 
+    padding-bottom: 50px;
+    
+}
+
+.content-container {
+    width: 90%;
+    max-width: 700px; /* Lebar maksimal konten */
+}
+
+/* Judul Halaman "Forum" */
+.page-title {
+    font-family: var(--pixel-font);
+    font-size: 48px;
+    color: white;
+    margin-bottom: 30px; /* Jarak dari tombol */
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* --- Tombol Buat Forum --- */
+.create-forum-btn {
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    font-family: var(--mono-font);
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    transition: color 0.2s;
+}
+
+.create-forum-btn:hover {
+    color: var(--primary-blue);
+}
+
+.plus-icon {
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    font-family: sans-serif; /* Plus icon lebih baik non-pixelated */
+    font-weight: 300;
+    transition: transform 0.2s;
+}
+
+.create-forum-btn:hover .plus-icon {
+    transform: rotate(90deg);
+}
+
+/* --- Daftar Thread Forum --- */
+.forum-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar thread */
+}
+
+.forum-thread-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white; /* Kartu berwarna putih */
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+
+.forum-thread-item:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Profil Thread */
+.thread-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #ccc; 
+    background-size: cover;
+    background-position: center;
+}
+
+/* Informasi Teks Thread */
+.thread-info {
+    flex-grow: 1;
+}
+
+.thread-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #232136; /* Warna teks gelap */
+    margin-bottom: 5px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.thread-info .desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('/assets/pp.jpg') center center;
+    background-size: cover;
+    /* background-color: #ccc; Warna abu-abu terang */
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* --- Style Tambahan: Sorotan Navigasi --- */
+nav ul li a.active {
+    color: white !important;
+    text-decoration: underline; 
+    text-decoration-color: var(--primary-blue);
+    text-underline-offset: 4px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 550px) {
+    .page-title {
+        font-size: 36px;
+    }
+    .create-forum-btn {
+        font-size: 20px;
+        gap: 10px;
+    }
+    .plus-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+    }
+    .thread-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+    .thread-info h2 {
+        font-size: 16px;
+    }
+    .thread-info .desc {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Create Post</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/createforum.css">
+</head>
+<body>
+
+<header>
+        <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="html/artic.html">Article</a></li>
+            <li><a href="html/quizpage.html">Quiz</a></li>
+            <li><a href="html/forumpage.html" class="active">Forum</a></li>
+        </ul>
+    </nav>
+
+    <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+</header>
+
+<section class="hero create-post-page">
+    <h1 class="page-title">Create Post</h1>
+
+    <div class="form-container">
+        <form id="forumForm" class="post-form">
+
+            <label for="title">Forum title</label>
+            <input type="text" id="title" placeholder="Enter forum title" required>
+
+            <label for="desc">Description</label>
+            <textarea id="desc" rows="6" placeholder="Describe your topic" required></textarea>
+
+            <button type="submit" class="post-forum-btn">POST FORUM</button>
+
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">CYBERLIB</div>
+</footer>
+
+<script>
+document.getElementById("forumForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const titleInput = document.getElementById("title");
+    const descInput = document.getElementById("desc");
+
+    const forums = JSON.parse(sessionStorage.getItem("forums") || "[]");
+    const profilePhoto = sessionStorage.getItem("profilePhoto");
+
+    forums.unshift({
+        title: titleInput.value,
+        desc: descInput.value,
+        authorPhoto: profilePhoto
+    });
+
+    sessionStorage.setItem("forums", JSON.stringify(forums));
+    window.location.href = "html/forumpage.html";
+});
+</script>
+
+
+
+</body>
+</html>

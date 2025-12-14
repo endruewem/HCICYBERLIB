@@ -1,0 +1,136 @@
+/* Kita perlu mengimpor variabel dari style.css jika ini adalah file terpisah */
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --mono-font: 'VT323', monospace;
+    --primary-blue: #4b89dc;
+}
+
+/* --- HERO SECTION: Halaman Quiz --- */
+.hero.quiz-page {
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+    /* Background Solid Biru Gelap (konsisten dengan halaman Article) */
+    background-color: #0d1b2a; 
+    
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    
+    padding-top: 120px; /* Jarak agar tidak tertutup navbar */
+    padding-bottom: 50px;
+}
+
+.content-container {
+    width: 90%;
+    max-width: 700px; /* Lebar maksimal konten kuis */
+}
+
+/* Judul Halaman "Quiz" */
+.page-title {
+    font-family: var(--pixel-font);
+    font-size: 48px;
+    color: white;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* Subtitle "Test your cybersecurity knowlage!" */
+.page-subtitle {
+    font-family: var(--mono-font);
+    font-size: 24px;
+    color: #4facfe; /* Warna biru muda */
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* --- Daftar Kuis (Kartu) --- */
+.quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar kartu kuis */
+}
+
+.quiz-card {
+    display: block; /* Agar bisa mengambil lebar penuh */
+    text-decoration: none;
+    background-color: white; /* Kartu berwarna putih */
+    color: #232136; /* Warna teks gelap */
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 8px solid var(--primary-blue); /* Garis biru di kiri */
+}
+
+.quiz-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.quiz-card .details {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.quiz-card .status {
+    font-family: var(--mono-font);
+    font-size: 20px;
+    font-weight: bold;
+}
+.status.not-attempt {
+    color: #e74c3c;
+}
+
+.status.attempted {
+    color: #2ecc71;
+}
+
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('/assets/pp.jpg') center center;
+    background-size: cover;
+    /* background-color: #ccc; Warna abu-abu terang */
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Style Tambahan: Sorotan Navigasi --- */
+
+/* Sorotan Link Aktif di Navbar (untuk Quiz) */
+nav ul li a.active {
+    color: white !important;
+    text-decoration: underline; 
+    text-decoration-color: var(--primary-blue);
+    text-underline-offset: 4px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 550px) {
+    .page-title {
+        font-size: 36px;
+    }
+    .page-subtitle {
+        font-size: 18px;
+    }
+    .quiz-card {
+        padding: 20px;
+    }
+    .quiz-card h2 {
+        font-size: 18px;
+    }
+}

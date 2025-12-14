@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Home</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/mainpage.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html">Article</a></li>
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+        
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">WELCOME!</h1> 
+            <p class="subtitle">Start Your Journey to Cyber Knowledge.</p>
+            <p class="description">
+                Selamat datang kembali! Jelajahi ratusan artikel, ikuti kuis interaktif, dan bergabunglah dengan komunitas kami.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

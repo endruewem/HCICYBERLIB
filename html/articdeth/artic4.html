@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - E-commerce platform breach exposes nearly 34 million customers data</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/articdetcss/artic4.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html" class="active">Article</a></li> 
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero article-detail-page">
+        <div class="article-content-box">
+            
+            <button class="back-btn" onclick="history.back()">
+                <span class="arrow-icon">←</span>
+            </button>
+
+            <div class="article-image-container">
+                <img src="assets/arttum3.png" 
+                     alt="Data Breach Sign" 
+                     class="article-main-image">
+            </div>
+
+            <div class="article-text">
+                <p class="article-date">2 years ago . 12 November 2023</p>
+                <h1 class="article-title">Tougher cyber security laws proposed for Jersey</h1>
+                
+                <p>New draft laws in Jersey have been proposed to give islanders better protection from cyber attacks.
+
+Ministers said there were concerns that criminals were increasingly trying to steal information and data held on company, government and private computers.
+
+The new draft laws would be overseen by the Jersey Cyber Security Centre and Deputy Kirsten Morel, said it would bring the island into line with best practice in other jurisdictions.
+
+He said the "legislation delivers a robust, future-proof framework for cyber security governance, incident response, and critical infrastructure protection in Jersey".</p>
+                
+                <p>Ministers said they particularly wanted to protect essential services, such as transport, food supplies and health care - as well as the government.
+
+A cyber attack on Marks and Spencer in April cost the company millions of pounds in lost revenue, something Ministers were trying to prevent in Jersey.
+
+The government said companies that were considered essential would have to comply with a series of standards.
+
+If they failed to do so they could be fined £10,000.</p>
+                
+                
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

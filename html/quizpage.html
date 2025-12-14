@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Quiz</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/quizpage.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html">Article</a></li>
+                <li><a href="html/quizpage.html" class="active">Quiz</a></li> 
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero quiz-page">
+        <div class="content-container">
+            <h1 class="page-title">Quiz</h1>
+            <p class="page-subtitle">Test your cybersecurity knowlage!</p>
+
+            <div class="quiz-list">
+                
+                <a href="html/quiz.html?id=1" class="quiz-card">
+                    <h2>Keamanan Data & Privasi</h2>
+                    <p class="details">5 Questions</p>
+                    <p class="status">Not Attempt</p>
+                </a>
+
+                <a href="html/quiz.html?id=2" class="quiz-card">
+                    <h2>Ancaman Siber</h2>
+                    <p class="details">5 Questions</p>
+                    <p class="status">Not Attempt</p>
+                </a>
+
+               <a href="html/quiz.html?id=3" class="quiz-card">
+                    <h2>Keamanan Akun</h2>
+                    <p class="details">5 Questions</p>
+                    <p class="status">Not Attempt</p>
+                </a>
+
+              <a href="html/quiz.html?id=4" class="quiz-card">
+                    <h2>Media Sosial</h2>
+                    <p class="details">5 Questions</p>
+                    <p class="status">Not Attempt</p>
+                </a>
+
+                <a href="html/quiz.html?id=5" class="quiz-card">
+                    <h2>Jaringan Aman</h2>
+                    <p class="details">5 Questions</p>
+                    <p class="status">Not Attempt</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+document.querySelectorAll(".quiz-card").forEach(card => {
+    const url = new URL(card.href);
+    const id = url.searchParams.get("id");
+
+    const statusEl = card.querySelector(".status");
+    const saved = sessionStorage.getItem(`quiz_${id}`);
+
+    // HAPUS SEMUA CLASS STATUS DULU
+    statusEl.classList.remove("not-attempt", "attempted");
+
+    if (saved) {
+        const data = JSON.parse(saved);
+        statusEl.textContent = `Attempted (${data.score}/${data.total})`;
+        statusEl.classList.add("attempted");
+    } else {
+        statusEl.textContent = "Not Attempt";
+        statusEl.classList.add("not-attempt");
+    }
+});
+</script>
+
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

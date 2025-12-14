@@ -1,0 +1,129 @@
+/* Kita perlu mengimpor variabel dari style.css jika ini adalah file terpisah */
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --primary-blue: #4b89dc;
+}
+
+/* --- HERO SECTION: Halaman Profil (Background Gradien Biru) --- */
+.hero.profile-page {
+    /* Background gradien biru (konsisten dengan form pages) */
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+    
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Kompensasi untuk fixed header */
+    padding-top: 80px; 
+    padding-bottom: 50px;
+}
+
+/* Judul Halaman */
+.page-title {
+    font-family: var(--pixel-font);
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+/* Container Profil (Kotak Putih) */
+.profile-container {
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 450px; 
+    width: 90%;
+    text-align: center;
+}
+
+/* Gambar Profil Besar (Lingkaran Abu-abu) */
+.large-profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Warna abu-abu terang */
+    margin: 0 auto 30px auto;
+    /* Anda bisa menggunakan background-image di sini jika ada gambar default */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a0a0a0"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center 50%;
+    background-size: 50%;
+}
+
+/* Tombol Ganti Foto Profil */
+.change-photo-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    letter-spacing: 1px;
+}
+
+.change-photo-btn:hover {
+    background-color: #3a6eb5;
+}
+
+/* --- Style Tambahan: Icon Profil di Navbar --- */
+/* Di halaman profil, icon profil di navbar harus disorot (misalnya dengan border yang lebih tebal) */
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('/assets/pp.jpg') center center;
+    background-size: cover;
+    /* background-color: #ccc; Warna abu-abu terang */
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.profile-icon.profile-active {
+    border: 4px solid #fff; /* Sorotan */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 500px) {
+    .page-title {
+        font-size: 32px;
+    }
+    .profile-container {
+        padding: 30px;
+    }
+    .large-profile-pic {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    .change-photo-btn {
+        font-size: 12px;
+    }
+}
+
+.logout-text {
+    text-decoration: none;
+
+    margin-top: 25px;
+    font-size: 15px;
+    color: #ff0c0c;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.logout-text:hover {
+    color: #e53935; /* merah halus */
+}

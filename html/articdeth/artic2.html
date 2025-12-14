@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - E-commerce platform breach exposes nearly 34 million customers data</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/articdetcss/artic2.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html" class="active">Article</a></li> 
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero article-detail-page">
+        <div class="article-content-box">
+            
+            <button class="back-btn" onclick="history.back()">
+                <span class="arrow-icon">←</span>
+            </button>
+
+            <div class="article-image-container">
+                <img src="assets/arttum2.png" 
+                     alt="Data Breach Sign" 
+                     class="article-main-image">
+            </div>
+
+            <div class="article-text">
+                <p class="article-date">1 minute ago</p>
+                <h1 class="article-title">Data copied in Kensington and Chelsea cyber attack</h1>
+                
+                <p>The Royal Borough of Kensington and Chelsea (RBKC) confirmed that "some data was copied and taken away" during a recent cyber attack.
+
+RBKC said the breach was discovered after detecting unusual activity early on Monday and that it took "all necessary steps" to shut down and isolate systems to make them as secure as possible.
+
+The authority said it believed the breach "only impacts historical data", adding: "We still have access to this information, it has not been stolen, but it is possible it could end up in the public domain."
+
+The Met Police said it had received a referral from Action Fraud following the attack. The force said inquiries were in the "early stages" and no arrests had been made.</p>
+                
+                <p>RBKC said it was checking whether the compromised data included personal or financial details of residents, customers and service users, but warned the process would take time.
+
+The council told the Local Democracy Reporting Service that it took cyber security seriously and spent more than £12m annually on IT and security systems.
+
+With advice from the National Cyber Security Centre (NCSC), RBKC is urging residents, customers and service users to be extra vigilant when receiving calls, emails or text messages.</p>
+                
+                <p>Emergency plans were activated by the council following the attack, and RBKC asked staff to work from home where possible, with some phone lines and online services disrupted.
+
+RBKC has informed the Information Commissioners Office.</p>
+                
+                <p>It is understood that the same incident has also affected Westminster City Council and Hammersmith and Fulham Council due to "joint arrangements".
+
+Hammersmith and Fulham Council said it "was able to successfully isolate and safeguard our network" and that there was currently "no evidence of H&F systems being compromised".
+
+However, the council was still investigating its systems and, as a precautionary measure, had temporarily suspended some public-facing applications, it added.
+
+Westminster City Council said it was "continuing to respond to the cyber security incident identified on Monday 24 November".
+
+A spokesperson said: "We want to reassure residents that council services are running, although some disruption remains.
+
+"Immediate steps were taken to contain the issue and protect our systems," the spokesperson added.</p>
+                
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+/* --- VARIABLES --- */
+:root {
+    --nav-bg: #232136;
+    --primary-blue: #4b89dc;
+    --pixel-font: 'Press Start 2P', cursive;
+    --mono-font: 'VT323', monospace;
+    --body-font: 'Montserrat', sans-serif;
+}
+
+/* --- RESET & GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    color: white;
+    overflow-x: hidden;
+    background-color: #0d1b2a;
+}
+
+/* --- NAVBAR --- */
+header {
+    background-color: var(--nav-bg);
+    padding: 15px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-family: var(--pixel-font);
+    font-size: 24px;
+    color: #4facfe;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-family: var(--pixel-font);
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: var(--mono-font);
+    font-size: 25px;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+.login-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #3a6eb5;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--nav-bg);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    /* Footer relatif terhadap konten, atau bisa dibuat fixed jika diinginkan */
+    position: relative; 
+    bottom: 0;
+}
+
+.footer-logo {
+    font-family: var(--pixel-font);
+    color: #7b7896;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+/* --- RESPONSIVE HEADER --- */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    nav ul {
+        display: none;
+    }
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+}
+.logo-container {
+    cursor: pointer;
+}
+
+.logo-link:hover .logo-text {
+    color: var(--primary-blue);
+}

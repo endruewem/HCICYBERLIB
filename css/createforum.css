@@ -1,0 +1,106 @@
+:root {
+    --pixel-font: 'Press Start 2P', cursive;
+    --primary-blue: #4b89dc;
+}
+
+/* ===== CREATE POST PAGE ===== */
+.hero.create-post-page {
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 140px;
+    padding-bottom: 60px;
+}
+
+/* Title */
+.create-post-page .page-title {
+    font-family: var(--pixel-font);
+    font-size: 40px;
+    color: white;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+/* Form Card */
+.form-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    width: 90%;
+    max-width: 650px;
+}
+
+/* Labels */
+.post-form label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #232136;
+}
+
+/* Inputs */
+.post-form input,
+.post-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f1f7fe;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.post-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.post-form input:focus,
+.post-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(75,137,220,0.3);
+}
+
+/* Button */
+.post-forum-btn {
+    margin-top: 25px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.post-forum-btn:hover {
+    background-color: #3a6eb5;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .create-post-page .page-title {
+        font-size: 32px;
+    }
+
+    .form-container {
+        padding: 25px;
+    }
+
+    .post-form label {
+        font-size: 16px;
+    }
+}

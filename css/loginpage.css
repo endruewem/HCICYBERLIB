@@ -1,0 +1,126 @@
+/* Kita menggunakan .hero yang sama dengan style.css, tapi mengubah isinya */
+
+/* Background dan layout halaman login */
+.hero.login-page {
+    /* Background gradien biru (ditemukan di gambar) */
+    background: url('/assets/bg2.jpg') center center / cover no-repeat;
+
+    
+    /* Atur agar section mengisi seluruh tinggi layar */
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Kompensasi untuk fixed header */
+    padding-top: 80px; 
+    padding-bottom: 50px;
+}
+
+/* Judul "login first!" */
+.login-title {
+    font-family: var(--pixel-font, 'Press Start 2P', cursive);
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+/* Container Form (Kotak Putih) */
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+}
+
+.login-form label {
+    display: block;
+    color: #232136; /* Warna teks gelap */
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f7fe; /* Warna biru muda pada input */
+    font-size: 16px;
+    transition: box-shadow 0.3s;
+}
+
+.login-form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(75, 137, 220, 0.3);
+}
+
+.signup-link {
+    font-size: 14px;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.signup-link a {
+    color: var(--primary-blue, #4b89dc);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Tombol Login Form */
+.form-login-btn {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: var(--primary-blue, #4b89dc);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-login-btn:hover {
+    background-color: #3a6eb5;
+}
+
+/* Icon Profil (Lingkaran Putih/Abu di Navbar) */
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff; /* Warna abu-abu terang */
+    /* border: 2px solid white; */
+}
+
+/* Mengatur ulang footer agar menempel di bawah konten, bukan layar */
+/* Di halaman login, karena kontennya mungkin tidak full 100vh, kita pastikan footer ada di bawah */
+.login-footer {
+    position: relative; /* Pastikan footer mengikuti alur konten */
+    margin-top: 0;
+}
+
+/* Media Query untuk Responsif */
+@media (max-width: 550px) {
+    .login-title {
+        font-size: 30px;
+    }
+    .login-container {
+        padding: 25px;
+    }
+}

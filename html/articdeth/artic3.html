@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - E-commerce platform breach exposes nearly 34 million customers data</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/articdetcss/artic3.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html" class="active">Article</a></li> 
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero article-detail-page">
+        <div class="article-content-box">
+            
+            <button class="back-btn" onclick="history.back()">
+                <span class="arrow-icon">←</span>
+            </button>
+
+            <div class="article-image-container">
+                <img src="assets/arttum4.png" 
+                     alt="Data Breach Sign" 
+                     class="article-main-image">
+            </div>
+
+            <div class="article-text">
+                <p class="article-date">2 month ago</p>
+                <h1 class="article-title">Asahi says 1.5 million customers data potentially leaked in cyber-attack</h1>
+                
+                <p>Japanese beer giant Asahi revealed on Thursday that a massive cyber-attack in September has potentially leaked the personal information of more than 1.5 million customers.
+
+The drinks company published a statement on its investigation into the ransomware attack, which had crippled its operations across its factories in Japan and forced employees to take orders by pen and paper.
+
+Asahi said it found that personal details of people who had contacted its customer service centres were likely exposed and that those affected would be notified soon.
+
+The firm added that it would delay the release of its full-year financial results to focus on dealing with the fallout of the attack.
+
+</p>
+                
+                <p>Asahi did not state the attackers identity or demands. Ransomware group Qilin - which has previously hacked other major firms - had claimed responsibility for the Asahi attack.
+
+The beer maker said in its preliminary findings that it discovered a disruption at one of its data centres on 29 September.
+
+It said that although the system was quickly isolated, investigators found the attacker had already infiltrated the network, encrypted its data and deployed ransomware - a virus that blocks access to files until a ransom is paid.
+
+Some data in the affected computers, along with personal information stored in the hacked servers, were also potentially exposed, said Asahi.
+
+The only confirmed cases of data exposure involved 18 items of employee-related personal information, which were stored on company-issued laptops, Asahi told the BBC.
+
+All other personal information involved is regarded as being at risk of possible leakage, it added.
+
+It includes personal details of more than 1.52 million customers, specifically their names, gender, addresses and contact information.
+
+Data belonging to about 107,000 current and former employees and 168,000 family members of staff were also potentially leaked.
+
+The name and contact details of 114,000 external contacts that had communicated with the firm were also linked.
+
+Credit card details were not included in Asahis list of leaked data.
+
+The company added that it has not confirmed any evidence of the data being released and that the impact of the attack is limited to systems managed in Japan.
+
+The firm also owns big brands in Europe like Peroni and Fullers Brewery in the UK. Asahi has said that the operations of those firms have not been impacted by the cyber-attack.
+
+The company said it spent nearly two months containing the attack and is now working to restore systems and reconfigure its network.
+
+</p>
+                
+                <p>The outage resulted in drink shortages in shops across Japan. Asahi accounts for around 40% of the countrys beer market.
+
+The shortage also affected Asahis soft drinks, such as ginger beer and soda water.
+
+Shipments are also gradually resuming, said Atsushi Katsuki, the firms president and chief executive, who apologised for the difficulties caused by the disruption.
+
+"We are making every effort to achieve full system restoration as quickly as possible, while implementing measures to prevent recurrence and strengthening information security across the group."
+
+Other global brands have also recently experienced similar cyber-attacks.
+
+Jaguar Land Rover was forced to tap emergency funding after a major cyber-attack crippled operations at its British factories.</p>
+                
+                
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+const navbarIcon = document.querySelector(".profile-icon");
+
+if (savedPhoto && navbarIcon) {
+    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+}
+</script>
+
+</body>
+</html>

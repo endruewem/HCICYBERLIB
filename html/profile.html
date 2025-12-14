@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Profile</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+    <header>
+            <a href="html/mainpage.html" class="logo-link">
+        <div class="logo-container">
+            <div class="logo-icon">C</div> 
+            <div class="logo-text">CYBERLIB</div>
+        </div>
+    </a>
+        
+        <nav>
+            <ul>
+                <li><a href="html/artic.html">Article</a></li>
+                <li><a href="html/quizpage.html">Quiz</a></li>
+                <li><a href="html/forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="html/profile.html" class="profile-link">
+    <div class="profile-icon"></div>
+</a>
+
+    </header>
+
+    <section class="hero profile-page">
+        <h1 class="page-title">Profile page</h1>
+        
+        <div class="profile-container">
+    <div class="large-profile-pic" id="profilePreview"></div>
+
+    <button class="change-photo-btn" id="changePhotoBtn">
+        CHANGE PROFILE PHOTO
+    </button>
+
+    <!-- LOG OUT -->
+    <p class="logout-text" id="logoutBtn">Log out</p>
+
+    <input 
+        type="file" 
+        id="photoInput" 
+        accept="image/*" 
+        style="display: none;"
+    >
+</div>
+
+
+    </section>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+<script>
+const changeBtn = document.getElementById("changePhotoBtn");
+const fileInput = document.getElementById("photoInput");
+const profilePreview = document.getElementById("profilePreview");
+const navbarIcon = document.querySelector(".profile-icon");
+
+// LOAD FOTO DARI SESSIONSTORAGE SAAT PAGE LOAD
+const savedPhoto = sessionStorage.getItem("profilePhoto");
+if (savedPhoto) {
+    profilePreview.style.backgroundImage = `url(${savedPhoto})`;
+    profilePreview.style.backgroundSize = "cover";
+    profilePreview.style.backgroundPosition = "center";
+
+    if (navbarIcon) {
+        navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
+    }
+}
+
+// KLIK BUTTON → BUKA FILE PICKER
+changeBtn.addEventListener("click", () => {
+    fileInput.click();
+});
+
+// SAAT FILE DIPILIH
+fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+        const imageData = reader.result;
+
+        // Preview besar
+        profilePreview.style.backgroundImage = `url(${imageData})`;
+        profilePreview.style.backgroundSize = "cover";
+        profilePreview.style.backgroundPosition = "center";
+
+        // Icon navbar ikut berubah
+        if (navbarIcon) {
+            navbarIcon.style.backgroundImage = `url(${imageData})`;
+        }
+
+        // SIMPAN KE SESSIONSTORAGE
+        sessionStorage.setItem("profilePhoto", imageData);
+    };
+
+    reader.readAsDataURL(file);
+});
+</script>
+<script>
+const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+    // bersihin data session (opsional tapi bagus)
+    sessionStorage.clear();
+
+    // pindah ke halaman sebelum login
+    window.location.href = "/index.html";
+});
+</script>
+
+
+</body>
+</html>

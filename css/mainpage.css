@@ -1,0 +1,96 @@
+/* --- HERO SECTION (Background sama dengan sebelum login) --- */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    
+    /* BACKGROUND: Menggunakan path dan properti yang sama seperti yang Anda berikan */
+    background: url('/assets/bg1.jpg') center center / cover no-repeat;
+    
+    /* Tambahkan layer gelap agar teks lebih kontras, opsional */
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('/assets/bg1.jpg'); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 80px;
+}
+
+
+.hero-content {
+    margin-top: -50px;
+}
+
+.main-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 80px;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    color: white; /* Pastikan warna teks putih */
+    text-shadow: 4px 4px 0px #000;
+}
+
+.subtitle {
+    font-family: 'VT323', monospace;
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.description {
+    font-size: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* --- STYLE UNTUK ICON PROFIL DI NAVBAR --- */
+/* (Mengambil dari loginpage.css karena ini adalah elemen baru di navbar) */
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('/assets/pp.jpg') center center;
+    background-size: cover;
+    /* background-color: #ccc; Warna abu-abu terang */
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* --- RESPONSIVE HERO --- */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 36px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .description {
+        font-size: 14px;
+        padding: 0 20px;
+    }
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+}
+.logo-container {
+    cursor: pointer;
+}
+
+.logo-link:hover .logo-text {
+    color: var(--primary-blue);
+}
