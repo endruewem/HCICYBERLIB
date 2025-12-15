@@ -48,9 +48,10 @@
                 
                 <p class="signup-link">Dont have an account? <a href="/html/signuppage.html">Sign up here!</a></p>
                 
-                 <a href="/html/mainpage.html" class="form-login-btn">
+                 <button type="submit" class="form-login-btn">
     LOGIN
-</a>
+</button>
+
             </form>
         </div>
     </section>
@@ -58,6 +59,28 @@
     <footer class="login-footer">
         <div class="footer-logo">CYBERLIB</div>
     </footer>
+
+    <script>
+const loginForm = document.querySelector(".login-form");
+
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // STOP reload
+
+    const username = document.getElementById("username").value.trim();
+
+    if (!username) {
+        alert("Username wajib diisi");
+        return;
+    }
+
+    // SIMPAN USERNAME
+    sessionStorage.setItem("username", username);
+
+    // PINDAH KE MAIN PAGE
+    window.location.href = "/html/mainpage.html";
+});
+</script>
+
 
 </body>
 </html>

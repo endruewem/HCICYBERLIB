@@ -101,11 +101,15 @@
 /* --- Style Tambahan: Sorotan Navigasi dan Profil --- */
 /* Karena ini adalah file CSS yang sangat terpisah, kita tambahkan lagi style untuk profil & link aktif */
 .profile-icon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #ccc; 
+    background: url('/assets/pfp.jpg') center center;
+    background-size: cover;
+    /* background-color: #ccc; Warna abu-abu terang */
     border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 nav ul li a.active {

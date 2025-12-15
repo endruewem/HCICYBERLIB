@@ -43,6 +43,14 @@
         <div class="profile-container">
     <div class="large-profile-pic" id="profilePreview"></div>
 
+
+<!-- USERNAME -->
+<div class="username-wrapper">
+    <span id="usernameText">USERNAME</span>
+    <input type="text" id="usernameInput" maxlength="20">
+</div>
+
+
     <button class="change-photo-btn" id="changePhotoBtn">
         CHANGE PROFILE PHOTO
     </button>
@@ -125,6 +133,46 @@ logoutBtn.addEventListener("click", () => {
 });
 </script>
 
+<script>
+const usernameText = document.getElementById("usernameText");
+const usernameInput = document.getElementById("usernameInput");
+
+// AMBIL USERNAME DARI SESSION STORAGE
+const storedUsername = sessionStorage.getItem("username");
+
+// Kalau ada username dari login/signup → tampilkan
+if (storedUsername) {
+    usernameText.textContent = storedUsername;
+}
+
+// Klik username → edit
+usernameText.addEventListener("click", () => {
+    usernameInput.value = usernameText.textContent;
+    usernameText.style.display = "none";
+    usernameInput.style.display = "inline-block";
+    usernameInput.focus();
+});
+
+// Simpan username
+function saveUsername() {
+    const newName = usernameInput.value.trim();
+    if (!newName) return;
+
+    usernameText.textContent = newName;
+    sessionStorage.setItem("username", newName);
+
+    usernameInput.style.display = "none";
+    usernameText.style.display = "inline-block";
+}
+
+// Enter = simpan
+usernameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") saveUsername();
+});
+
+// Klik luar = simpan
+usernameInput.addEventListener("blur", saveUsername);
+</script>
 
 </body>
 </html>

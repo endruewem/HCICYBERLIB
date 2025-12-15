@@ -52,9 +52,10 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password">
                 
-                <a href="/html/loginpage.html" class="form-login-btn">
+                <button type="submit" class="form-login-btn">
     SIGN UP
-</a>
+</button>
+
 
             </form>
         </div>
@@ -63,6 +64,29 @@
     <footer class="login-footer">
         <div class="footer-logo">CYBERLIB</div>
     </footer>
+
+
+    <script>
+const signupForm = document.querySelector(".login-form");
+
+signupForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+
+    if (!username) {
+        alert("Username wajib diisi");
+        return;
+    }
+
+    // SIMPAN USERNAME
+    sessionStorage.setItem("username", username);
+
+    // SIMULASI AKUN TERBUAT → LOGIN
+    window.location.href = "/html/mainpage.html";
+});
+</script>
+
 
 </body>
 </html>
