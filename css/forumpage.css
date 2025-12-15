@@ -178,3 +178,28 @@ nav ul li a.active {
         font-size: 12px;
     }
 }
+
+
+
+/* === Forum Search (Header) === */
+.forum-search {
+    margin-right: 20px;
+}
+
+.forum-search input {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 200px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: width 0.3s, box-shadow 0.3s;
+}
+
+.forum-search input:focus {
+    width: 260px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
