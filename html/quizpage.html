@@ -3,114 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLIB - Quiz</title>
+    <title>CYBERLIB - Simulation Modules</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <link rel="stylesheet" href="/css/quizpage.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* --- 1. BACKGROUND FIX (SAMA DENGAN COURSE.HTML) --- */
+        body {
+            background-image: url('../assets/bg2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            color: #c5c6c7;
+            font-family: 'Segoe UI', sans-serif;
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Overlay Gelap agar teks terbaca */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+
+        /* --- 2. HEADER PROFILE FIX --- */
+        /* Memastikan ikon profil muncul & bisa diklik */
+        .profile-link {
+            margin-left: 20px;
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .profile-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #1f2833;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #45a29e;
+            transition: 0.3s;
+        }
+        .profile-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+            border-color: #66fcf1;
+        }
+
+        /* --- 3. CONTAINER --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1.title {
+            font-family: 'Press Start 2P';
+            color: #66fcf1;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px #000;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .quiz-card {
+            background: rgba(31, 40, 51, 0.9); /* Transparan */
+            border: 2px solid #45a29e;
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            min-height: 250px;
+            backdrop-filter: blur(5px);
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+            border-color: #66fcf1;
+        }
+
+        .quiz-icon { font-size: 3rem; margin-bottom: 15px; }
+        .quiz-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 10px; color: #66fcf1; }
+        .quiz-desc { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; flex-grow: 1; }
+
+        .status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .status.not-attempt { background: #333; color: #888; border: 1px solid #555; }
+        .status.attempted { background: #f0a500; color: #000; }
+        .status.passed { background: #66fcf1; color: #000; box-shadow: 0 0 10px #66fcf1; }
+    </style>
 </head>
 <body>
 
     <header>
-            <a href="/html/mainpage.html" class="logo-link">
-        <div class="logo-container">
-            <div class="logo-icon">C</div> 
-            <div class="logo-text">CYBERLIB</div>
-        </div>
-    </a>
-        
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container">
+                <div class="logo-icon">C</div> 
+                <div class="logo-text">CYBERLIB</div>
+            </div>
+        </a>
         <nav>
             <ul>
-                <li><a href="/html/artic.html">Article</a></li>
-                <li><a href="/html/quizpage.html" class="active">Quiz</a></li> 
-                <li><a href="/html/forumpage.html">Forum</a></li>
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html">Course</a></li>
+                <li><a href="quizpage.html" style="color:#66fcf1;">Quiz</a></li>
+                <li><a href="forumpage.html">Forum</a></li>
             </ul>
         </nav>
-
-        <a href="/html/profile.html" class="profile-link">
-    <div class="profile-icon"></div>
-</a>
-
+        
+        <a href="profile.html" class="profile-link">
+            <div class="profile-icon"></div>
+        </a>
     </header>
 
-    <section class="hero quiz-page">
-        <div class="content-container">
-            <h1 class="page-title">Quiz</h1>
-            <p class="page-subtitle">Test your cybersecurity knowlage!</p>
+    <div class="container">
+        <h1 class="title">TRAINING SIMULATION</h1>
 
-            <div class="quiz-list">
-                
-                <a href="/html/quiz.html?id=1" class="quiz-card">
-                    <h2>Keamanan Data & Privasi</h2>
-                    <p class="details">5 Questions</p>
-                    <p class="status">Not Attempt</p>
-                </a>
-
-                <a href="/html/quiz.html?id=2" class="quiz-card">
-                    <h2>Ancaman Siber</h2>
-                    <p class="details">5 Questions</p>
-                    <p class="status">Not Attempt</p>
-                </a>
-
-               <a href="/html/quiz.html?id=3" class="quiz-card">
-                    <h2>Keamanan Akun</h2>
-                    <p class="details">5 Questions</p>
-                    <p class="status">Not Attempt</p>
-                </a>
-
-              <a href="/html/quiz.html?id=4" class="quiz-card">
-                    <h2>Media Sosial</h2>
-                    <p class="details">5 Questions</p>
-                    <p class="status">Not Attempt</p>
-                </a>
-
-                <a href="/html/quiz.html?id=5" class="quiz-card">
-                    <h2>Jaringan Aman</h2>
-                    <p class="details">5 Questions</p>
-                    <p class="status">Not Attempt</p>
-                </a>
-
-            </div>
+        <div class="quiz-grid" id="menu-container">
+            <p style="text-align:center; width:100%; grid-column:1/-1;">Loading Modules...</p>
         </div>
-    </section>
+    </div>
 
     <footer>
         <div class="footer-logo">CYBERLIB</div>
     </footer>
-<script>
-document.querySelectorAll(".quiz-card").forEach(card => {
-    const url = new URL(card.href);
-    const id = url.searchParams.get("id");
 
-    const statusEl = card.querySelector(".status");
-    const saved = sessionStorage.getItem(`quiz_${id}`);
+    <script>
+        // 1. Profil Icon
+        const savedPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+        const profileIcon = document.querySelector('.profile-icon');
+        if(profileIcon) profileIcon.style.backgroundImage = `url('${savedPfp}')`;
 
-    // HAPUS SEMUA CLASS STATUS DULU
-    statusEl.classList.remove("not-attempt", "attempted");
+        // 2. Generate Menu dari JSON
+        document.addEventListener("DOMContentLoaded", () => {
+            loadMenu();
+        });
 
-    if (saved) {
-        const data = JSON.parse(saved);
-        statusEl.textContent = `Attempted (${data.score}/${data.total})`;
-        statusEl.classList.add("attempted");
-    } else {
-        statusEl.textContent = "Not Attempt";
-        statusEl.classList.add("not-attempt");
-    }
-});
-</script>
+        async function loadMenu() {
+            const container = document.getElementById('menu-container');
+            
+            try {
+                // Fetch Data
+                const response = await fetch('../data/quizdata.json');
+                const quizzes = await response.json();
+                
+                container.innerHTML = ''; 
 
-<script>
-const savedPhoto = sessionStorage.getItem("profilePhoto");
-const navbarIcon = document.querySelector(".profile-icon");
+                if(quizzes.length === 0) {
+                    container.innerHTML = '<p>No quizzes found.</p>';
+                    return;
+                }
 
-if (savedPhoto && navbarIcon) {
-    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
-}
-</script>
+                quizzes.forEach(quiz => {
+                    const savedData = JSON.parse(localStorage.getItem(`quiz_${quiz.id}`));
+                    
+                    let statusClass = "not-attempt";
+                    let statusText = "Not Attempted";
+                    let cardBorder = "";
 
+                    if (savedData) {
+                        if (savedData.passed) {
+                            statusClass = "passed";
+                            statusText = `PASSED (${savedData.score}/${savedData.total})`;
+                            cardBorder = "border-color: #66fcf1;";
+                        } else {
+                            statusClass = "attempted";
+                            statusText = `FAILED (${savedData.score}/${savedData.total})`;
+                        }
+                    }
+
+                    // Ikon Otomatis
+                    let icon = "📝"; 
+                    const t = quiz.title.toLowerCase();
+                    if(t.includes("network")) icon = "🌐";
+                    else if(t.includes("social")) icon = "🎭";
+                    else if(t.includes("web")) icon = "💻";
+                    else if(t.includes("linux")) icon = "🐧";
+                    else if(t.includes("data") || t.includes("privasi")) icon = "🔒";
+                    else if(t.includes("ancaman") || t.includes("siber")) icon = "⚠️";
+                    else if(t.includes("internet")) icon = "📡";
+
+                    const cardHTML = `
+                        <a href="quiz.html?id=${quiz.id}" class="quiz-card" style="${cardBorder}">
+                            <div class="quiz-icon">${icon}</div>
+                            <div class="quiz-title">${quiz.title}</div>
+                            <div class="quiz-desc">${quiz.questions.length} Questions Challenge</div>
+                            <div class="status ${statusClass}">${statusText}</div>
+                        </a>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `
+                    <div style="text-align:center; width:100%; grid-column:1/-1; color:#e74c3c;">
+                        <h3>Error Loading Data</h3>
+                        <p>Pastikan file <code>quizdata.json</code> ada di folder data.</p>
+                    </div>`;
+            }
+        }
+    </script>
 </body>
 </html>

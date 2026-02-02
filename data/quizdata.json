@@ -35,91 +35,29 @@
     "title": "Ancaman Siber",
     "questions": [
       {
-        "q": "Penipuan online yang menyamar sebagai pihak resmi disebut…",
-        "options": ["Spam", "Phishing", "Malware", "Virus"],
+        "q": "Penipuan online yang menyamar jadi institusi resmi disebut…",
+        "options": ["Spam", "Phishing", "Hacking", "Browsing"],
         "answer": 1
       },
       {
-        "q": "Program berbahaya pada komputer disebut…",
-        "options": ["Firewall", "Antivirus", "Malware", "Update"],
+        "q": "Malware yang mengunci data dan minta tebusan disebut…",
+        "options": ["Spyware", "Adware", "Ransomware", "Worm"],
         "answer": 2
       },
       {
-        "q": "Serangan yang meminta tebusan setelah mengunci data disebut…",
-        "options": ["Trojan", "Phishing", "Ransomware", "Spyware"],
-        "answer": 2
-      },
-      {
-        "q": "Mengelabui korban untuk mencuri data disebut…",
-        "options": ["Hacking", "Cracking", "Social engineering", "Tracking"],
-        "answer": 2
-      },
-      {
-        "q": "Ancaman siber dapat menyebabkan kerugian…",
-        "options": ["Waktu saja", "Data dan uang", "Internet cepat", "Perangkat baru"],
-        "answer": 1
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Keamanan Akun & Autentikasi",
-    "questions": [
-      {
-        "q": "Password yang kuat berisi…",
-        "options": ["Nama", "Angka saja", "Kombinasi karakter", "Tanggal lahir"],
-        "answer": 2
-      },
-      {
-        "q": "Verifikasi tambahan selain password disebut…",
-        "options": ["Login ulang", "2FA", "CAPTCHA", "Firewall"],
+        "q": "Tanda perangkat terkena virus adalah…",
+        "options": ["Baterai awet", "Kinerja lambat", "Internet cepat", "Suara jernih"],
         "answer": 1
       },
       {
-        "q": "Menggunakan password sama di semua akun itu…",
-        "options": ["Praktis", "Aman", "Berisiko", "Dianjurkan"],
-        "answer": 2
-      },
-      {
-        "q": "Mengganti password secara berkala itu…",
-        "options": ["Tidak perlu", "Berbahaya", "Dianjurkan", "Dilarang"],
-        "answer": 2
-      },
-      {
-        "q": "Password sebaiknya dibagikan ke orang lain?",
-        "options": ["Ya", "Kadang-kadang", "Tidak", "Jika diminta"],
-        "answer": 2
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "title": "Internet & Media Sosial Aman",
-    "questions": [
-      {
-        "q": "Membagikan info pribadi berlebihan disebut…",
-        "options": ["Sharing", "Oversharing", "Tagging", "Upload"],
+        "q": "Cara menghindari ancaman siber adalah…",
+        "options": ["Klik semua link", "Pakai antivirus", "Matikan firewall", "Share password"],
         "answer": 1
       },
       {
-        "q": "Riwayat aktivitas online disebut…",
-        "options": ["Cache", "Cookies", "Jejak digital", "Log out"],
+        "q": "Password yang kuat sebaiknya mengandung…",
+        "options": ["Tanggal lahir", "Nama panggilan", "Kombinasi huruf, angka, simbol", "Urutan angka"],
         "answer": 2
-      },
-      {
-        "q": "Menghina orang lain di internet disebut…",
-        "options": ["Spam", "Hoaks", "Cyberbullying", "Phishing"],
-        "answer": 2
-      },
-      {
-        "q": "Akun media sosial sebaiknya diatur menjadi…",
-        "options": ["Publik", "Terbuka", "Privat", "Bebas"],
-        "answer": 2
-      },
-      {
-        "q": "Etika digital penting untuk menjaga…",
-        "options": ["Popularitas", "Keamanan", "Followers", "Kecepatan"],
-        "answer": 1
       }
     ]
   },
@@ -139,19 +77,63 @@
       },
       {
         "q": "Alat untuk mengamankan koneksi internet disebut…",
-        "options": ["Browser", "VPN", "Email", "Wi-Fi"],
-        "answer": 1
+        "options": ["VPN", "GPS", "CCTV", "NFC"],
+        "answer": 0
       },
       {
-        "q": "Website aman biasanya menggunakan…",
-        "options": ["HTTP", "WWW", "HTTPS", "FTP"],
+        "q": "HTTPS pada URL menandakan situs tersebut…",
+        "options": ["Lambat", "Tidak aman", "Terenskripsi/Aman", "Berbayar"],
         "answer": 2
       },
       {
-        "q": "Risiko jaringan terbuka adalah…",
-        "options": ["Internet lambat", "Data dicuri", "Baterai boros", "Layar rusak"],
+        "q": "Mengapa Bluetooth harus dimatikan jika tidak dipakai?",
+        "options": ["Boros kuota", "Mencegah peretasan (Bluebugging)", "Merusak HP", "Mengganggu sinyal"],
         "answer": 1
       }
+    ]
+  },
+  {
+    "id": "netsec",
+    "title": "Network Security",
+    "questions": [
+      { "q": "Port standar untuk protokol SSH adalah?", "options": ["Port 22", "Port 80", "Port 443", "Port 21"], "answer": 0 },
+      { "q": "Apa kepanjangan dari DDoS?", "options": ["Direct Denial of Service", "Distributed Denial of Service", "Domain Distribution System", "Data Denial System"], "answer": 1 },
+      { "q": "Tools yang digunakan untuk packet analyzing?", "options": ["Nmap", "Wireshark", "Metasploit", "Burp Suite"], "answer": 1 },
+      { "q": "Manakah yang merupakan IP Loopback?", "options": ["192.168.1.1", "127.0.0.1", "8.8.8.8", "10.0.0.1"], "answer": 1 },
+      { "q": "Protokol aman pengganti Telnet adalah?", "options": ["FTP", "HTTP", "SSH", "SMTP"], "answer": 2 }
+    ]
+  },
+  {
+    "id": "soceng",
+    "title": "Social Engineering",
+    "questions": [
+      { "q": "Teknik manipulasi psikologis disebut?", "options": ["Hacking", "Social Engineering", "Phishing", "Cracking"], "answer": 1 },
+      { "q": "Serangan email palsu yang menargetkan individu spesifik?", "options": ["Phishing", "Spear Phishing", "Vishing", "Smishing"], "answer": 1 },
+      { "q": "Mencari informasi dari sampah target disebut?", "options": ["Dumpster Diving", "Trash Hunting", "Bin Raiding", "Garbage Col"], "answer": 0 },
+      { "q": "Tailgating adalah?", "options": ["Membuntuti orang masuk pintu aman", "Mengirim ekor virus", "Menyadap kabel", "Mengunci akun"], "answer": 0 },
+      { "q": "Emosi apa yang sering dimanfaatkan penipu?", "options": ["Senang", "Takut & Urgensi", "Bosan", "Lapar"], "answer": 1 }
+    ]
+  },
+  {
+    "id": "webexp",
+    "title": "Web Exploitation",
+    "questions": [
+      { "q": "Apa itu SQL Injection?", "options": ["Menyuntikkan kode SQL ke input", "Install SQL Server", "Membuat Database", "Menghapus Tabel"], "answer": 0 },
+      { "q": "XSS adalah singkatan dari?", "options": ["XML Site Scripting", "Cross Site Scripting", "Extra Secure System", "Xenon Shell"], "answer": 1 },
+      { "q": "Apa fungsi Burp Suite?", "options": ["Edit Video", "Web Vulnerability Scanner", "Music Player", "Text Editor"], "answer": 1 },
+      { "q": "File apa yang mengatur indeksasi bot di web?", "options": ["index.html", "robots.txt", "style.css", "main.js"], "answer": 1 },
+      { "q": "Kode respons HTTP untuk 'Not Found'?", "options": ["200", "500", "404", "301"], "answer": 2 }
+    ]
+  },
+  {
+    "id": "linux",
+    "title": "Linux Basics",
+    "questions": [
+      { "q": "Perintah untuk melihat isi direktori?", "options": ["cd", "ls", "mkdir", "rm"], "answer": 1 },
+      { "q": "Perintah untuk mengubah izin file?", "options": ["chown", "chmod", "grep", "cat"], "answer": 1 },
+      { "q": "Siapa user tertinggi di Linux?", "options": ["Admin", "Root", "User", "Guest"], "answer": 1 },
+      { "q": "Distro Linux populer untuk Pentesting?", "options": ["Ubuntu", "Kali Linux", "Mint", "Fedora"], "answer": 1 },
+      { "q": "Perintah untuk menampilkan manual command?", "options": ["help", "man", "info", "doc"], "answer": 1 }
     ]
   }
 ]

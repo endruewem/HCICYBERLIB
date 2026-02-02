@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Detail</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-image: url('../assets/bg2.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;
+            margin: 0; font-family: 'Montserrat', sans-serif; color: white; padding-top: 100px;
+        }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: -1; }
+
+        .detail-wrapper { width: 90%; max-width: 800px; margin: 0 auto; padding-bottom: 50px; }
+
+        /* Kartu Thread */
+        .thread-card {
+            background: rgba(31, 40, 51, 0.9); padding: 30px; border-radius: 10px; border: 1px solid #45a29e; margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+        }
+        .thread-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #45a29e; padding-bottom: 15px; }
+        .thread-avatar { width: 60px; height: 60px; border-radius: 50%; background-size: cover; border: 2px solid #66fcf1; }
+        .thread-meta h2 { margin: 0; color: #66fcf1; font-family: 'Montserrat'; font-size: 1.5rem; }
+        .thread-meta span { font-size: 0.8rem; color: #888; }
+        .thread-body { line-height: 1.6; color: #e0e0e0; white-space: pre-wrap; margin-bottom: 20px; }
+
+        /* Interaction Bar */
+        .interaction-bar { display: flex; gap: 20px; font-size: 0.9rem; font-weight: bold; cursor: pointer; }
+        .btn-like { background: none; border: none; color: #4b89dc; font-weight: bold; cursor: pointer; padding: 0; font-size: 1rem; }
+        .btn-like.liked { color: #e74c3c; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); } /* Merah jika sudah like */
+        .btn-like:hover { transform: scale(1.1); transition: 0.2s; }
+
+        /* Komentar */
+        .comment-section { margin-top: 30px; }
+        .comment-box { background: rgba(11, 12, 16, 0.8); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #45a29e; }
+        .reply-box { margin-left: 40px; border-left: 2px solid #333; padding-left: 10px; margin-top: 10px; }
+
+        .comment-actions { display: flex; gap: 15px; margin-top: 10px; font-size: 0.8rem; }
+        .action-btn { background: none; border: none; color: #4b89dc; cursor: pointer; font-weight: bold; padding: 0; }
+        .action-btn:hover { color: #66fcf1; }
+        .action-btn.liked { color: #e74c3c; } /* Merah jika sudah like */
+
+        .input-area { margin-top: 30px; background: rgba(31, 40, 51, 0.9); padding: 20px; border-radius: 8px; border: 1px solid #45a29e; }
+        textarea { width: 100%; padding: 10px; background: #0b0c10; color: white; border: 1px solid #45a29e; border-radius: 5px; margin-bottom: 10px; font-family: 'Montserrat'; }
+        .btn-submit { background: #45a29e; color: #0b0c10; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        .profile-link { margin-left: 20px; display: block; text-decoration: none; }
+        .profile-icon { width: 45px; height: 45px; border-radius: 50%; background-color: #1f2833; background-size: cover; background-position: center; border: 2px solid #45a29e; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container"><div class="logo-icon">C</div><div class="logo-text">CYBERLIB</div></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html">Course</a></li>
+                <li><a href="quizpage.html">Quiz</a></li>
+                <li><a href="forumpage.html" style="color:#66fcf1;">Forum</a></li>
+            </ul>
+        </nav>
+        <a href="profile.html" class="profile-link"><div class="profile-icon"></div></a>
+    </header>
+
+    <div class="detail-wrapper">
+        <button onclick="window.location.href='forumpage.html'" style="background:none; border:none; color:#45a29e; cursor:pointer; margin-bottom:20px; font-weight:bold;">← BACK TO FORUM</button>
+        
+        <div id="main-thread" class="thread-card">Loading...</div>
+
+        <div class="input-area">
+            <h3>Post a Reply</h3>
+            <textarea id="main-comment-input" rows="3" placeholder="Write your thoughts..."></textarea>
+            <button class="btn-submit" onclick="addComment(null)">SUBMIT REPLY</button>
+        </div>
+
+        <div class="comment-section">
+            <h3 style="color:#66fcf1; font-family:'Press Start 2P'; font-size:1rem; margin-bottom:20px;">COMMENTS</h3>
+            <div id="comments-container"></div>
+        </div>
+    </div>
+
+    <footer><div class="footer-logo">CYBERLIB</div></footer>
+
+    <script>
+        // 1. Setup User
+        const currentUserName = localStorage.getItem('username') || "Guest";
+        const currentUserPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+        document.querySelector('.profile-icon').style.backgroundImage = `url('${currentUserPfp}')`;
+
+        // 2. Ambil ID Forum
+        const urlParams = new URLSearchParams(window.location.search);
+        const forumId = parseInt(urlParams.get('id'));
+
+        let forums = JSON.parse(localStorage.getItem('forums')) || [];
+        const forumIndex = forums.findIndex(f => f.id === forumId);
+        const forum = forums[forumIndex];
+
+        if (!forum) {
+            document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:100px;'>Forum not found.</h2>";
+        }
+
+        // --- PASTIKAN STRUKTUR DATA LIKE ADA ---
+        // Jika data lama belum punya array likedBy, kita buatkan
+        if (!forum.likedBy) forum.likedBy = []; 
+
+        // 3. Render Thread Utama
+        function render() {
+            const container = document.getElementById('main-thread');
+            const pfp = forum.authorPhoto || '../assets/pfp.jpg';
+            
+            // Cek apakah user sudah like thread ini
+            const isLiked = forum.likedBy.includes(currentUserName);
+            const likeClass = isLiked ? "liked" : "";
+            const likeIcon = isLiked ? "♥" : "♡";
+            
+            // Hitung jumlah like dari panjang array
+            const likeCount = forum.likedBy.length;
+
+            container.innerHTML = `
+                <div class="thread-header">
+                    <div class="thread-avatar" style="background-image: url('${pfp}')"></div>
+                    <div class="thread-meta">
+                        <h2>${forum.title}</h2>
+                        <span>Posted by <strong style="color:#45a29e;">${forum.author}</strong></span>
+                    </div>
+                </div>
+                <div class="thread-body">${forum.desc}</div>
+                <div class="interaction-bar">
+                    <button class="btn-like ${likeClass}" onclick="toggleThreadLike()">${likeIcon} ${likeCount} Likes</button>
+                    <div style="color:#4b89dc">💬 ${countTotalComments(forum.comments)} Comments</div>
+                </div>
+            `;
+            renderComments(forum.comments, document.getElementById('comments-container'));
+        }
+
+        // 4. Render Komentar (Recursive)
+        function renderComments(commentsList, container) {
+            container.innerHTML = '';
+            if(!commentsList) return;
+
+            commentsList.forEach(c => {
+                // Pastikan data like ada untuk komentar
+                if (!c.likedBy) c.likedBy = [];
+
+                const div = document.createElement('div');
+                div.className = 'comment-box';
+                const cpfp = c.userPhoto || '../assets/pfp.jpg';
+                
+                // Cek status like komentar
+                const isLiked = c.likedBy.includes(currentUserName);
+                const likeClass = isLiked ? "liked" : "";
+                const likeIcon = isLiked ? "♥" : "♡";
+                const likeCount = c.likedBy.length;
+
+                div.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                        <div style="width:30px; height:30px; border-radius:50%; background:url('${cpfp}') center/cover;"></div>
+                        <strong style="color:#45a29e;">${c.user}</strong>
+                        <span style="font-size:0.7rem; color:#666;">${new Date(c.date).toLocaleDateString()}</span>
+                    </div>
+                    <p style="color:#ddd; margin-bottom:10px;">${c.text}</p>
+                    
+                    <div class="comment-actions">
+                        <button class="action-btn ${likeClass}" onclick="toggleCommentLike(${c.id})">
+                            ${likeIcon} ${likeCount}
+                        </button>
+                        <button class="action-btn" onclick="toggleReplyForm(${c.id})">↩ Reply</button>
+                    </div>
+                    
+                    <div id="reply-form-${c.id}" style="display:none; margin-top:10px;">
+                        <textarea id="input-${c.id}" style="width:100%; height:50px;" placeholder="Reply to ${c.user}..."></textarea>
+                        <button class="btn-submit" style="font-size:0.7rem;" onclick="addComment(${c.id})">Send</button>
+                    </div>
+
+                    <div class="reply-box" id="nested-${c.id}"></div>
+                `;
+                container.appendChild(div);
+
+                if(c.replies && c.replies.length > 0) {
+                    renderComments(c.replies, div.querySelector(`#nested-${c.id}`));
+                }
+            });
+        }
+
+        function toggleReplyForm(id) {
+            const form = document.getElementById(`reply-form-${id}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // 5. Tambah Komentar / Reply
+        function addComment(parentId) {
+            let inputId = parentId ? `input-${parentId}` : 'main-comment-input';
+            let text = document.getElementById(inputId).value;
+
+            if (!text) return;
+
+            const newComment = {
+                id: Date.now(),
+                user: currentUserName,
+                userPhoto: currentUserPfp,
+                text: text,
+                date: Date.now(),
+                likedBy: [], // Array kosong untuk menampung user yang like
+                replies: []
+            };
+
+            if (parentId === null) {
+                if (!forum.comments) forum.comments = [];
+                forum.comments.push(newComment);
+            } else {
+                insertReply(forum.comments, parentId, newComment);
+            }
+
+            saveActivityLog("COMMENT", `Replied in: "${forum.title}"`);
+            saveAndRender();
+            document.getElementById(inputId).value = ''; 
+        }
+
+        function insertReply(comments, targetId, newReply) {
+            for (let c of comments) {
+                if (c.id === targetId) {
+                    if (!c.replies) c.replies = [];
+                    c.replies.push(newReply);
+                    return true;
+                }
+                if (c.replies && insertReply(c.replies, targetId, newReply)) return true;
+            }
+            return false;
+        }
+
+        // 6. LOGIKA LIKE THREAD (TOGGLE)
+        function toggleThreadLike() {
+            const index = forum.likedBy.indexOf(currentUserName);
+            
+            if (index === -1) {
+                // Belum like -> Tambahkan
+                forum.likedBy.push(currentUserName);
+            } else {
+                // Sudah like -> Hapus (Unlike)
+                forum.likedBy.splice(index, 1);
+            }
+            
+            // Update angka total untuk backward compatibility
+            forum.likes = forum.likedBy.length;
+            
+            saveAndRender();
+        }
+
+        // 7. LOGIKA LIKE KOMENTAR (TOGGLE + RECURSIVE)
+        function toggleCommentLike(commentId) {
+            // Fungsi pencari komentar
+            function findAndToggle(list) {
+                for (let c of list) {
+                    if (c.id === commentId) {
+                        // Pastikan array ada
+                        if (!c.likedBy) c.likedBy = [];
+
+                        const index = c.likedBy.indexOf(currentUserName);
+                        if (index === -1) {
+                            c.likedBy.push(currentUserName); // Like
+                        } else {
+                            c.likedBy.splice(index, 1); // Unlike
+                        }
+                        
+                        // Update angka total
+                        c.likes = c.likedBy.length;
+                        return true;
+                    }
+                    // Cari di nested replies
+                    if (c.replies && findAndToggle(c.replies)) return true;
+                }
+                return false;
+            }
+
+            if (findAndToggle(forum.comments)) {
+                saveAndRender();
+            }
+        }
+
+        function countTotalComments(list) {
+            if(!list) return 0;
+            let count = 0;
+            list.forEach(c => {
+                count++;
+                if(c.replies) count += countTotalComments(c.replies);
+            });
+            return count;
+        }
+
+        function saveAndRender() {
+            forums[forumIndex] = forum;
+            localStorage.setItem("forums", JSON.stringify(forums));
+            render();
+        }
+
+        function saveActivityLog(type, message) {
+            let logs = JSON.parse(localStorage.getItem('userLogs')) || [];
+            logs.unshift({
+                type: type,
+                msg: message,
+                date: new Date().toLocaleString()
+            });
+            if (logs.length > 20) logs = logs.slice(0, 20);
+            localStorage.setItem('userLogs', JSON.stringify(logs));
+        }
+
+        render();
+    </script>
+</body>
+</html>

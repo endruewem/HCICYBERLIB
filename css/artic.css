@@ -42,7 +42,7 @@
 .page-subtitle {
     font-family: var(--mono-font);
     font-size: 24px;
-    color: #4facfe; /* Warna biru muda */
+    color: wheat; /* Warna biru muda */
     margin-bottom: 40px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }

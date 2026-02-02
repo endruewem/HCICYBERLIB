@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERLIB - Course Repository</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* --- 1. BACKGROUND & LAYOUT FIX --- */
+        body {
+            /* Mundur satu folder ke assets */
+            background-image: url('../assets/bg2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Overlay Gelap (Agar teks terbaca) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); /* Gelap 75% */
+            z-index: -1;
+        }
+        
+        /* CONTAINER UTAMA (Margin Top agar tidak tertutup Header) */
+        #explorer-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 140px; /* Jarak aman dari Header */
+            padding-bottom: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* --- 2. GAYA KHUSUS FILE EXPLORER --- */
+        .page-title {
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            color: #66fcf1;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #000;
+            letter-spacing: 2px;
+            line-height: 1.5;
+        }
+
+        .window-frame {
+            background: rgba(31, 40, 51, 0.95); /* Semi transparan */
+            border: 2px solid #45a29e;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Header Window (Back button & Address bar) */
+        .window-header {
+            background: rgba(11, 12, 16, 0.95);
+            padding: 15px;
+            border-bottom: 1px solid #45a29e;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .btn-nav {
+            background: #45a29e;
+            color: #0b0c10;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+        }
+        .btn-nav:hover { background: #66fcf1; box-shadow: 0 0 10px #66fcf1; }
+        .btn-nav:disabled { background: #2c3e50; cursor: not-allowed; color: #7f8c8d; box-shadow: none; }
+
+        .address-bar {
+            flex-grow: 1;
+            background: #121418;
+            border: 1px solid #45a29e;
+            padding: 8px 15px;
+            color: #66fcf1;
+            font-family: 'Courier New', monospace;
+            border-radius: 4px;
+        }
+
+        /* Area Grid (Isi Folder) */
+        .window-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 30px;
+            align-content: start;
+        }
+
+        /* Item (Icon & Text) */
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .item:hover { 
+            background: rgba(102, 252, 241, 0.15); 
+            transform: translateY(-5px);
+        }
+
+        .item-icon { 
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            filter: drop-shadow(0 4px 2px rgba(0,0,0,0.5));
+        }
+        
+        .item-label { 
+            font-size: 0.9rem; 
+            word-break: break-word; 
+            color: #e0e0e0; 
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Warna Icon */
+        .icon-folder { color: #f0a500; }
+        .icon-video { color: #e74c3c; }
+        .icon-doc { color: #3498db; }
+
+        /* --- 3. PROFILE ICON FIX (FORCE STYLE) --- */
+        /* Ini ditambahkan agar icon profil pasti muncul di halaman ini */
+        .profile-link {
+            margin-left: 20px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .profile-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #1f2833; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #45a29e;
+            transition: all 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+            border-color: #66fcf1;
+        }
+
+        /* --- 4. MODAL VIDEO --- */
+        #videoModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            display: none;
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+
+        /* --- 5. RESPONSIVE (HP) --- */
+        @media screen and (max-width: 768px) {
+            #explorer-section { padding-top: 180px; } /* Turun lebih jauh di HP karena header numpuk */
+            .page-title { font-size: 1.2rem; }
+            .window-content { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .profile-link { margin-left: 0; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container">
+                <div class="logo-icon">C</div> 
+                <div class="logo-text">CYBERLIB</div>
+            </div>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html" style="color: #66fcf1; text-shadow: 0 0 5px #66fcf1;">Course</a></li>
+                <li><a href="quizpage.html">Quiz</a></li>
+                <li><a href="forumpage.html">Forum</a></li>
+            </ul>
+        </nav>
+
+        <a href="profile.html" class="profile-link">
+            <div class="profile-icon"></div>
+        </a>
+    </header>
+
+    <section id="explorer-section">
+        <h1 class="page-title">COURSE REPOSITORY</h1>
+        
+        <div class="window-frame">
+            <div class="window-header">
+                <button id="btn-back" class="btn-nav" onclick="goBack()" disabled>⬅ BACK</button>
+                <div id="address-bar" class="address-bar">root/</div>
+            </div>
+
+            <div id="grid-view" class="window-content">
+                <p style="color: gray; width: 100%; text-align: center; margin-top: 50px;">
+                    Loading Database System...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div id="videoModal">
+        <div style="position: absolute; top: 20px; right: 20px; color: white; cursor: pointer; font-size: 1.5rem; font-weight: bold;" onclick="closeVideo()">[ CLOSE X ]</div>
+        <div style="width: 90%; max-width: 1000px;">
+            <video id="mainPlayer" controls style="width: 100%; border: 2px solid #66fcf1; box-shadow: 0 0 30px rgba(102, 252, 241, 0.3); border-radius: 4px; background: #000;">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">CYBERLIB</div>
+    </footer>
+
+    <script>
+        const savedPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+        const profileIcon = document.querySelector('.profile-icon');
+        
+        if(profileIcon) {
+            profileIcon.style.backgroundImage = `url('${savedPfp}')`;
+        } else {
+            console.error("Profile Icon Element Not Found!");
+        }
+    </script>
+
+    <script src="../data/course_data.js"></script>
+
+    <script>
+        let currentLevel = 'root'; 
+        let currentCourseIdx = null;
+        const basePath = "../data/course/";
+        
+        const grid = document.getElementById('grid-view');
+        const addrBar = document.getElementById('address-bar');
+        const btnBack = document.getElementById('btn-back');
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof courses === 'undefined') {
+                grid.innerHTML = `
+                    <div style="text-align:center; color:#ff4444; width:100%; padding:20px;">
+                        <h3>⚠️ DATABASE ERROR</h3>
+                        <p>File <code>course_data.js</code> tidak ditemukan.</p>
+                        <p>Pastikan Anda sudah menjalankan script <strong>generate_course.py</strong>.</p>
+                    </div>`;
+                return;
+            }
+            renderRoot();
+        });
+
+        // --- FUNGSI TRACKING PROGRESS ---
+        function updateProgress(courseTitle, fileName) {
+            const courseData = courses.find(c => c.title === courseTitle);
+            if (!courseData) return;
+
+            // Hitung Total File di Course ini
+            let totalFiles = 0;
+            courseData.chapters.forEach(chap => {
+                totalFiles += chap.files.length;
+            });
+
+            // Ambil Log File yang sudah selesai dari LocalStorage
+            let completedFiles = JSON.parse(localStorage.getItem(`log_${courseTitle}`)) || [];
+
+            // Jika file ini belum ada di log, tambahkan
+            if (!completedFiles.includes(fileName)) {
+                completedFiles.push(fileName);
+                localStorage.setItem(`log_${courseTitle}`, JSON.stringify(completedFiles));
+                
+                // Hitung Persentase Baru
+                let percent = Math.floor((completedFiles.length / totalFiles) * 100);
+                
+                // Simpan Persentase
+                localStorage.setItem(`progress_${courseTitle}`, percent);
+                
+                console.log(`[PROGRESS] ${courseTitle}: ${percent}% (${completedFiles.length}/${totalFiles})`);
+                showToast(`Progress Saved: ${percent}%`);
+            }
+        }
+
+        // TAMPILAN ROOT (LIST COURSE)
+        function renderRoot() {
+            currentLevel = 'root';
+            addrBar.innerText = "root/";
+            btnBack.disabled = true;
+            grid.innerHTML = '';
+
+            courses.forEach((c, i) => {
+                // Ambil progress tersimpan untuk ditampilkan
+                let saved = localStorage.getItem(`progress_${c.title}`) || 0;
+                
+                grid.innerHTML += `
+                    <div class="item" onclick="openCourse(${i})">
+                        <div class="item-icon icon-folder">📁</div>
+                        <div class="item-label">${c.title}</div>
+                        <div style="font-size: 0.7rem; color: #66fcf1; margin-top:5px;">${saved}% DONE</div>
+                    </div>`;
+            });
+        }
+
+        // TAMPILAN COURSE (LIST CHAPTER)
+        function openCourse(idx) {
+            currentLevel = 'course';
+            currentCourseIdx = idx;
+            const c = courses[idx];
+            addrBar.innerText = `root/${c.folderName}/`;
+            btnBack.disabled = false;
+            grid.innerHTML = '';
+
+            if(!c.chapters || c.chapters.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; width:100%; color:#666;">- Folder Kosong -</p>';
+                return;
+            }
+
+            c.chapters.forEach((chap, chapIdx) => {
+                grid.innerHTML += `
+                    <div class="item" onclick="openChapter(${chapIdx})">
+                        <div class="item-icon icon-folder">📂</div>
+                        <div class="item-label">${chap.title}</div>
+                    </div>`;
+            });
+        }
+
+        // TAMPILAN CHAPTER (LIST FILE)
+        function openChapter(chapIdx) {
+            currentLevel = 'chapter';
+            const c = courses[currentCourseIdx];
+            const chap = c.chapters[chapIdx];
+            addrBar.innerText = `root/${c.folderName}/${chap.folderName}/`;
+            grid.innerHTML = '';
+
+            if(!chap.files || chap.files.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; width:100%; color:#666;">- Tidak ada file -</p>';
+                return;
+            }
+
+            chap.files.forEach(f => {
+                const fullPath = `${basePath}${c.folderName}/${chap.folderName}/${f.file}`;
+                
+                // Wrapper Klik untuk Tracking + Buka File
+                if(f.type === 'video') {
+                    const subPath = f.sub ? `${basePath}${c.folderName}/${chap.folderName}/${f.sub}` : '';
+                    grid.innerHTML += `
+                        <div class="item" onclick="handleFileClick('${c.title}', '${f.file}', 'video', '${fullPath}', '${subPath}')">
+                            <div class="item-icon icon-video">🎬</div>
+                            <div class="item-label">${f.name}</div>
+                        </div>`;
+                } else {
+                    grid.innerHTML += `
+                        <div class="item" onclick="handleFileClick('${c.title}', '${f.file}', 'doc', '${fullPath}')">
+                            <div class="item-icon icon-doc">📄</div>
+                            <div class="item-label">${f.name}<br><span style="font-size:0.7em; color:#45a29e;">[UNDUH]</span></div>
+                        </div>`;
+                }
+            });
+        }
+
+        // HANDLER KLIK GLOBAL
+        function handleFileClick(courseTitle, fileName, type, path, sub) {
+            updateProgress(courseTitle, fileName); // Simpan progress
+            
+            if (type === 'video') {
+                playVideo(path, sub);
+            } else {
+                window.open(path);
+            }
+        }
+
+        // TOMBOL BACK
+        function goBack() {
+            if(currentLevel === 'chapter') openCourse(currentCourseIdx);
+            else if(currentLevel === 'course') renderRoot();
+        }
+
+        // VIDEO PLAYER
+        function playVideo(src, sub) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('mainPlayer');
+            
+            video.innerHTML = `<source src="${src}" type="video/mp4">`;
+            if(sub) {
+                video.innerHTML += `<track src="${sub}" kind="subtitles" srclang="id" default>`;
+            }
+            
+            video.load();
+            modal.style.display = 'flex';
+            video.play();
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('mainPlayer');
+            video.pause();
+            modal.style.display = 'none';
+        }
+
+        // NOTIFIKASI TOAST
+        function showToast(msg) {
+            let toast = document.createElement('div');
+            toast.innerText = msg;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.background = '#45a29e';
+            toast.style.color = '#000';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '5px';
+            toast.style.fontWeight = 'bold';
+            toast.style.zIndex = '9999';
+            toast.style.fontFamily = 'Montserrat, sans-serif';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+    </script>
+</body>
+</html>

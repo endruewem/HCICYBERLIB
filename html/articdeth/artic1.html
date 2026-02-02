@@ -26,6 +26,7 @@
         <nav>
             <ul>
                 <li><a href="/html/artic.html" class="active">Article</a></li> 
+                <li><a href="/html/course.html">Course</a></li>
                 <li><a href="/html/quizpage.html">Quiz</a></li>
                 <li><a href="/html/forumpage.html">Forum</a></li>
             </ul>
@@ -109,6 +110,19 @@ The firm did not give details on who is behind the breach.</p>
         <div class="footer-logo">CYBERLIB</div>
     </footer>
 <script>
+    // Masukkan ini di dalam tag <script> di forumdetail.html
+
+// 1. Ambil data dari LocalStorage
+const savedPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+
+// 2. Cari elemen icon profil di header dan ganti background-nya
+const profileIcon = document.querySelector('.profile-icon');
+
+if (profileIcon) {
+    profileIcon.style.backgroundImage = `url('${savedPfp}')`;
+} else {
+    console.error("Elemen .profile-icon tidak ditemukan di Header!");
+}
 const savedPhoto = sessionStorage.getItem("profilePhoto");
 const navbarIcon = document.querySelector(".profile-icon");
 

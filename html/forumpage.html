@@ -4,158 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CYBERLIB - Forum</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/css/style.css">
     
-    <link rel="stylesheet" href="/css/forumpage.css">
+    <style>
+        body {
+            background-image: url('../assets/bg2.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;
+            margin: 0; font-family: 'Montserrat', sans-serif; color: white; padding-top: 100px;
+        }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); z-index: -1; }
+
+        .forum-wrapper { width: 90%; max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; }
+        
+        .retro-title { font-family: 'Press Start 2P', cursive; font-size: 24px; color: #66fcf1; text-align: left; margin-bottom: 20px; text-shadow: 2px 2px #000; }
+        
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+        #search-input { flex: 1; padding: 15px; border-radius: 8px; border: 2px solid #45a29e; background: #0b0c10; color: white; font-family: 'Montserrat'; }
+        .btn-create { background-color: #45a29e; color: #0b0c10; border: none; padding: 0 25px; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; display: flex; align-items: center; font-family: 'Press Start 2P'; font-size: 0.8rem; }
+        .btn-create:hover { background-color: #66fcf1; box-shadow: 0 0 10px #66fcf1; }
+
+        .forum-list { display: flex; flex-direction: column; gap: 20px; }
+        .forum-card {
+            background: rgba(31, 40, 51, 0.9); border: 1px solid #45a29e; border-radius: 10px; padding: 20px;
+            display: flex; gap: 20px; align-items: flex-start; text-decoration: none; color: white; transition: 0.3s;
+        }
+        .forum-card:hover { transform: translateX(5px); border-color: #66fcf1; box-shadow: 0 0 15px rgba(69, 162, 158, 0.2); }
+        .icon-box { width: 50px; height: 50px; border-radius: 50%; background-size: cover; background-position: center; border: 2px solid #66fcf1; flex-shrink: 0; }
+        .content-box h2 { margin: 0 0 5px 0; font-size: 1.2rem; color: #66fcf1; }
+        .content-box p { margin: 0; font-size: 0.9rem; color: #ccc; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .profile-link { margin-left: 20px; display: block; text-decoration: none; }
+        .profile-icon { width: 45px; height: 45px; border-radius: 50%; background-color: #1f2833; background-size: cover; background-position: center; border: 2px solid #45a29e; }
+    </style>
 </head>
 <body>
 
     <header>
-                <a href="/html/mainpage.html" class="logo-link">
-            <div class="logo-container">
-                <div class="logo-icon">C</div> 
-                <div class="logo-text">CYBERLIB</div>
-            </div>
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container"><div class="logo-icon">C</div><div class="logo-text">CYBERLIB</div></div>
         </a>
-
-        
         <nav>
             <ul>
-                <li><a href="/html/artic.html">Article</a></li>
-                <li><a href="/html/quizpage.html">Quiz</a></li>
-                <li><a href="/html/forumpage.html" class="active">Forum</a></li> 
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html">Course</a></li>
+                <li><a href="quizpage.html">Quiz</a></li>
+                <li><a href="forumpage.html" style="color: #66fcf1;">Forum</a></li>
             </ul>
         </nav>
-
-
-        <div class="forum-search">
-    <input 
-        type="text" 
-        id="forumSearchInput" 
-        placeholder="Search forum..."
-    >
-</div>
-
-
-        <a href="/html/profile.html" class="profile-link">
-    <div class="profile-icon"></div>
-</a>
-
+        <a href="profile.html" class="profile-link"><div class="profile-icon"></div></a>
     </header>
 
-    <section class="hero forum-page">
-        <div class="content-container">
-            <h1 class="page-title">Forum</h1>
-            
-            <a href="/html/createforum.html" class="create-forum-btn">
-                <span class="plus-icon">+</span>
-                Make your forum!
-            </a>
-
-
-            <div class="forum-list">
-                
-                <a href="#" class="forum-thread-item">
-                    <div class="thread-icon" style="background-image: url('/assets/for1.jpg');"></div>
-                    <div class="thread-info">
-                        <h2>Password Reuse and Account Security</h2>
-                        <p class="desc">Using the same password across multiple platforms significantly increases the risk of account compromise. Once one service is breached, other accounts may also become vulnerable. What strategies do you use to manage passwords securely?</p>
-                    </div>
-                </a>
-
-                <a href="#" class="forum-thread-item">
-                    <div class="thread-icon" style="background-image: url('/assets/for2.jpg');"></div>
-                    <div class="thread-info">
-                        <h2>Public Wi-Fi Security Risks</h2>
-                        <p class="desc">Public Wi-Fi networks are convenient but often lack proper encryption. Attackers may intercept data transmitted over unsecured networks. How do you protect your information when using public Wi-Fi?</p>
-                    </div>
-                </a>
-                
-                <a href="#" class="forum-thread-item">
-                    <div class="thread-icon" style="background-image: url('/assets/for3.jpg');"></div>
-                    <div class="thread-info">
-                        <h2>Two-Factor Authentication Effectiveness</h2>
-                        <p class="desc">Two-factor authentication adds an extra layer of security beyond passwords. However, some users still avoid enabling it. In your opinion, what prevents wider adoption of 2FA?</p>
-                    </div>
-                </a>
-
-                <a href="#" class="forum-thread-item">
-                    <div class="thread-icon" style="background-image: url('/assets/for4.jpg');"></div>
-                    <div class="thread-info">
-                        <h2>Phishing Attacks in Daily Communication</h2>
-                        <p class="desc">Phishing attempts are becoming more sophisticated and harder to detect. Emails and messages can appear legitimate at first glance. What indicators do you usually check to identify phishing attempts?</p>
-                    </div>
-                </a>
-
-                <a href="#" class="forum-thread-item">
-                    <div class="thread-icon" style="background-image: url('/assets/for5.jpg');"></div>
-                    <div class="thread-info">
-                        <h2>Data Privacy on Social Media Platforms</h2>
-                        <p class="desc">Social media platforms collect large amounts of user data. Understanding privacy settings is essential to limit data exposure. How often do you review and adjust your privacy settings?</p>
-                    </div>
-                </a>
-                
-            </div>
+    <div class="forum-wrapper">
+        <h1 class="retro-title">COMMUNITY FORUM</h1>
+        
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search topics..." onkeyup="filterForums()">
+            <a href="createforum.html" class="btn-create">+ NEW THREAD</a>
         </div>
-    </section>
 
-    <footer>
-        <div class="footer-logo">CYBERLIB</div>
-    </footer>
+        <div class="forum-list" id="forum-list"></div>
+    </div>
 
-
+    <footer><div class="footer-logo">CYBERLIB</div></footer>
 
     <script>
-const forumList = document.querySelector(".forum-list");
-const forums = JSON.parse(sessionStorage.getItem("forums") || "[]");
+        const savedPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+        document.querySelector('.profile-icon').style.backgroundImage = `url('${savedPfp}')`;
 
-forums.forEach(f => {
-    const a = document.createElement("a");
-    a.href = "#";
-    a.className = "forum-thread-item";
+        const forumList = document.getElementById('forum-list');
+        const searchInput = document.getElementById('search-input');
+        
+        // Data Dummy Awal (Jika kosong)
+        const defaultForums = [
+            {
+                id: 1, title: "Cara bypass firewall level 5?", desc: "Saya stuck di level ini, ada tips?",
+                author: "NetRunner99", authorPhoto: "../assets/pfp.jpg", likes: 12, comments: []
+            },
+            {
+                id: 2, title: "Diskusi: SQL Injection vs XSS", desc: "Mana yang lebih berbahaya menurut kalian?",
+                author: "CyberGhost", authorPhoto: "../assets/pfp.jpg", likes: 8, comments: []
+            }
+        ];
 
-    a.innerHTML = `
-        <div class="thread-icon" style="background-image: url('${f.authorPhoto}')"></div>
-        <div class="thread-info">
-            <h2>${f.title}</h2>
-            <p class="desc">${f.desc}</p>
-        </div>
-    `;
-
-    forumList.prepend(a);
-});
-</script>
-<script>
-const savedPhoto = sessionStorage.getItem("profilePhoto");
-const navbarIcon = document.querySelector(".profile-icon");
-
-if (savedPhoto && navbarIcon) {
-    navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
-}
-</script>
-<script>
-const searchInput = document.getElementById("forumSearchInput");
-
-searchInput.addEventListener("keyup", function () {
-    const keyword = this.value.toLowerCase();
-    const forumItems = document.querySelectorAll(".forum-thread-item");
-
-    forumItems.forEach(item => {
-        const title = item.querySelector("h2").innerText.toLowerCase();
-
-        if (title.includes(keyword)) {
-            item.style.display = "flex";
-        } else {
-            item.style.display = "none";
+        let forums = JSON.parse(localStorage.getItem('forums'));
+        if (!forums || forums.length === 0) {
+            forums = defaultForums;
+            localStorage.setItem('forums', JSON.stringify(forums));
         }
-    });
-});
-</script>
 
+        function renderForums(data) {
+            forumList.innerHTML = '';
+            data.forEach(f => {
+                const link = document.createElement("a");
+                link.href = `forumdetail.html?id=${f.id}`;
+                link.className = "forum-card";
+
+                const pfp = f.authorPhoto || '../assets/pfp.jpg';
+                const likeCount = f.likes || 0;
+                const commentCount = countTotalComments(f.comments);
+
+                link.innerHTML = `
+                    <div class="icon-box" style="background-image: url('${pfp}')"></div>
+                    <div class="content-box">
+                        <h2>${f.title}</h2>
+                        <p>${f.desc}</p>
+                        <div style="margin-top:8px; font-size:0.8rem; color:#4b89dc; font-weight:bold;">
+                            ♥ ${likeCount} Likes &nbsp; • &nbsp; 💬 ${commentCount} Comments
+                        </div>
+                    </div>
+                `;
+                forumList.appendChild(link);
+            });
+        }
+
+        function countTotalComments(comments) {
+            if (!comments) return 0;
+            let count = 0;
+            comments.forEach(c => {
+                count++;
+                if (c.replies) count += countTotalComments(c.replies);
+            });
+            return count;
+        }
+
+        function filterForums() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = forums.filter(f => 
+                f.title.toLowerCase().includes(query) || 
+                f.desc.toLowerCase().includes(query)
+            );
+            renderForums(filtered);
+        }
+
+        renderForums(forums);
+    </script>
 </body>
 </html>

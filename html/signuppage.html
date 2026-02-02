@@ -24,6 +24,7 @@
         <nav>
             <ul>
                 <li><a href="/html/loginpage.html">Article</a></li>
+                <li><a href="/html/loginpage.html">Course</a></li>
                 <li><a href="/html/loginpage.html">Quiz</a></li>
                 <li><a href="/html/loginpage.html">Forum</a></li>
             </ul>
@@ -51,6 +52,7 @@
                 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password">
+                <p class="signup-link">Already have an account? <a href="/html/loginpage.html">Login here!</a></p>
                 
                 <button type="submit" class="form-login-btn">
     SIGN UP
@@ -83,7 +85,7 @@ signupForm.addEventListener("submit", function (e) {
     sessionStorage.setItem("username", username);
 
     // SIMULASI AKUN TERBUAT → LOGIN
-    window.location.href = "/html/mainpage.html";
+    window.location.href = "/html/loginpage.html";
 });
 </script>
 

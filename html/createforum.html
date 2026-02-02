@@ -3,83 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLIB - Create Post</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>CYBERLIB - Create Forum</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-image: url('../assets/bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            padding-top: 100px;
+        }
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); z-index: -1;
+        }
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/createforum.css">
+        .create-container {
+            background: rgba(31, 40, 51, 0.9);
+            width: 90%; max-width: 600px;
+            padding: 40px; margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(69, 162, 158, 0.2);
+            border: 1px solid #45a29e;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        h1 { color: #66fcf1; font-family: 'Press Start 2P'; text-align: center; margin-bottom: 20px; font-size: 1.5rem; }
+        
+        .form-group { display: flex; flex-direction: column; gap: 10px; }
+        label { font-weight: 600; color: #c5c6c7; }
+        
+        input, textarea {
+            padding: 12px; border-radius: 8px; border: 1px solid #45a29e;
+            background: #0b0c10; color: white; font-family: 'Montserrat', sans-serif;
+        }
+        input:focus, textarea:focus { outline: none; border-color: #66fcf1; box-shadow: 0 0 8px rgba(102, 252, 241, 0.5); }
+
+        .btn-submit {
+            padding: 15px; background-color: #45a29e; color: #0b0c10;
+            border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            font-family: 'Press Start 2P'; font-size: 0.8rem; margin-top: 20px;
+        }
+        .btn-submit:hover { background-color: #66fcf1; box-shadow: 0 0 15px #66fcf1; }
+
+        .profile-link { margin-left: 20px; display: block; text-decoration: none; }
+        .profile-icon { width: 45px; height: 45px; border-radius: 50%; background-color: #1f2833; background-size: cover; background-position: center; border: 2px solid #45a29e; }
+    </style>
 </head>
 <body>
 
-<header>
-        <a href="/html/mainpage.html" class="logo-link">
-        <div class="logo-container">
-            <div class="logo-icon">C</div> 
-            <div class="logo-text">CYBERLIB</div>
-        </div>
-    </a>
+    <header>
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container"><div class="logo-icon">C</div><div class="logo-text">CYBERLIB</div></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html">Course</a></li>
+                <li><a href="quizpage.html">Quiz</a></li>
+                <li><a href="forumpage.html" style="color:#66fcf1;">Forum</a></li>
+            </ul>
+        </nav>
+        <a href="profile.html" class="profile-link"><div class="profile-icon"></div></a>
+    </header>
 
-    <nav>
-        <ul>
-            <li><a href="/html/artic.html">Article</a></li>
-            <li><a href="/html/quizpage.html">Quiz</a></li>
-            <li><a href="/html/forumpage.html" class="active">Forum</a></li>
-        </ul>
-    </nav>
-
-    <a href="/html/profile.html" class="profile-link">
-    <div class="profile-icon"></div>
-</a>
-
-</header>
-
-<section class="hero create-post-page">
-    <h1 class="page-title">Create Post</h1>
-
-    <div class="form-container">
-        <form id="forumForm" class="post-form">
-
-            <label for="title">Forum title</label>
-            <input type="text" id="title" placeholder="Enter forum title" required>
-
-            <label for="desc">Description</label>
-            <textarea id="desc" rows="6" placeholder="Describe your topic" required></textarea>
-
-            <button type="submit" class="post-forum-btn">POST FORUM</button>
-
+    <div class="create-container">
+        <h1>CREATE THREAD</h1>
+        <form id="createForumForm">
+            <div class="form-group">
+                <label for="title">TOPIC TITLE</label>
+                <input type="text" id="title" placeholder="What's on your mind?" required>
+            </div>
+            <div class="form-group">
+                <label for="desc">DESCRIPTION</label>
+                <textarea id="desc" rows="5" placeholder="Share details..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">POST THREAD</button>
         </form>
     </div>
-</section>
 
-<footer>
-    <div class="footer-logo">CYBERLIB</div>
-</footer>
+    <footer><div class="footer-logo">CYBERLIB</div></footer>
 
-<script>
-document.getElementById("forumForm").addEventListener("submit", e => {
-    e.preventDefault();
+    <script>
+        const form = document.getElementById('createForumForm');
+        
+        // 1. Ambil Identitas
+        const currentAuthor = localStorage.getItem('username') || "Anonymous User";
+        const currentPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
+        document.querySelector('.profile-icon').style.backgroundImage = `url('${currentPfp}')`;
 
-    const titleInput = document.getElementById("title");
-    const descInput = document.getElementById("desc");
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    const forums = JSON.parse(sessionStorage.getItem("forums") || "[]");
-    const profilePhoto = sessionStorage.getItem("profilePhoto");
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById('desc').value;
 
-    forums.unshift({
-        title: titleInput.value,
-        desc: descInput.value,
-        authorPhoto: profilePhoto
-    });
+            if (title && desc) {
+                const newForum = {
+                    id: Date.now(),
+                    title: title,
+                    desc: desc,
+                    author: currentAuthor,
+                    authorPhoto: currentPfp,
+                    likes: 0,
+                    likedBy: [],
+                    comments: []
+                };
 
-    sessionStorage.setItem("forums", JSON.stringify(forums));
-    window.location.href = "/html/forumpage.html";
-});
-</script>
+                // Simpan Forum
+                let forums = JSON.parse(localStorage.getItem('forums')) || [];
+                forums.unshift(newForum);
+                localStorage.setItem('forums', JSON.stringify(forums));
 
+                // --- CATAT AKTIVITAS KE LOG (PENTING) ---
+                saveActivityLog("THREAD", `Created topic: "${title}"`);
 
+                window.location.href = 'forumpage.html';
+            }
+        });
 
+        // FUNGSI PENCATAT LOG
+        function saveActivityLog(type, message) {
+            let logs = JSON.parse(localStorage.getItem('userLogs')) || [];
+            logs.unshift({
+                type: type,
+                msg: message,
+                date: new Date().toLocaleString()
+            });
+            if (logs.length > 20) logs = logs.slice(0, 20); // Simpan max 20 log
+            localStorage.setItem('userLogs', JSON.stringify(logs));
+        }
+    </script>
 </body>
 </html>

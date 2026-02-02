@@ -3,176 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLIB - Profile</title>
+    <title>CYBERLIB - User Profile</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <link rel="stylesheet" href="/css/profile.css">
+    <style>
+        /* --- BACKGROUND FIX --- */
+        body {
+            background-image: url('../assets/bg2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', sans-serif;
+            padding-top: 100px;
+            min-height: 100vh;
+            margin: 0;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: -1;
+        }
+
+        .profile-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+        }
+
+        /* Identitas */
+        .identity-card {
+            background: rgba(31, 40, 51, 0.9);
+            border: 2px solid #45a29e;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            height: fit-content;
+            backdrop-filter: blur(5px);
+        }
+        .pfp-large {
+            width: 150px; height: 150px; border-radius: 50%;
+            background-color: #000; background-size: cover; background-position: center;
+            border: 4px solid #66fcf1; margin: 0 auto 20px auto;
+            box-shadow: 0 0 15px #66fcf1;
+        }
+        .user-name { color: #66fcf1; font-family: 'Press Start 2P'; font-size: 1.1rem; margin-bottom: 10px; word-break: break-word; }
+        .user-rank { color: #f0a500; font-weight: bold; font-family: 'Courier New'; background: rgba(240, 165, 0, 0.1); padding: 5px 10px; border-radius: 4px; display: inline-block; }
+
+        /* Dashboard */
+        .dashboard-grid { display: flex; flex-direction: column; gap: 30px; }
+        .panel { background: rgba(31, 40, 51, 0.9); border: 1px solid #45a29e; padding: 25px; border-radius: 8px; backdrop-filter: blur(5px); }
+        .panel-header { color: #66fcf1; font-family: 'Press Start 2P'; font-size: 1rem; border-bottom: 2px solid #45a29e; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+
+        /* Progress Bar */
+        .course-item { margin-bottom: 15px; }
+        .course-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; font-weight: bold; }
+        .progress-bar-bg { background: #0b0c10; height: 10px; border-radius: 5px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #45a29e, #66fcf1); width: 0%; transition: width 1s ease; }
+
+        /* Badges */
+        .badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 15px; }
+        .badge { background: #0b0c10; border: 1px solid #45a29e; padding: 10px; text-align: center; border-radius: 6px; cursor: help; transition: 0.3s; }
+        .badge:hover { border-color: #f0a500; transform: scale(1.05); }
+        .badge-icon { font-size: 2rem; margin-bottom: 5px; display: block; }
+        .badge-name { font-size: 0.6rem; color: #c5c6c7; text-transform: uppercase; }
+
+        /* Activity Log */
+        .activity-log { font-family: 'VT323', monospace; font-size: 1.1rem; max-height: 200px; overflow-y: auto; }
+        .log-item { border-left: 2px solid #45a29e; padding-left: 10px; margin-bottom: 10px; color: #c5c6c7; }
+        .log-date { color: #888; font-size: 0.9rem; }
+
+        .profile-link { margin-left: 20px; display: block; text-decoration: none; }
+        .profile-icon { width: 45px; height: 45px; border-radius: 50%; background-color: #1f2833; background-size: cover; background-position: center; border: 2px solid #45a29e; transition: 0.3s; }
+        .profile-icon:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(102, 252, 241, 0.5); }
+
+        @media (max-width: 768px) { .profile-container { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
     <header>
-            <a href="/html/mainpage.html" class="logo-link">
-        <div class="logo-container">
-            <div class="logo-icon">C</div> 
-            <div class="logo-text">CYBERLIB</div>
-        </div>
-    </a>
-        
+        <a href="mainpage.html" class="logo-link">
+            <div class="logo-container">
+                <div class="logo-icon">C</div> <div class="logo-text">CYBERLIB</div>
+            </div>
+        </a>
         <nav>
             <ul>
-                <li><a href="/html/artic.html">Article</a></li>
-                <li><a href="/html/quizpage.html">Quiz</a></li>
-                <li><a href="/html/forumpage.html">Forum</a></li>
+                <li><a href="artic.html">Article</a></li>
+                <li><a href="course.html">Course</a></li>
+                <li><a href="quizpage.html">Quiz</a></li>
+                <li><a href="forumpage.html">Forum</a></li>
             </ul>
         </nav>
-
-        <a href="/html/profile.html" class="profile-link">
-    <div class="profile-icon"></div>
-</a>
-
+        <a href="profile.html" class="profile-link"><div class="profile-icon"></div></a>
     </header>
 
-    <section class="hero profile-page">
-        <h1 class="page-title">Profile page</h1>
-        
-        <div class="profile-container">
-    <div class="large-profile-pic" id="profilePreview"></div>
+    <div class="profile-container">
+        <aside class="identity-card">
+            <div class="pfp-large" id="pfp-display"></div>
+            
+            <input type="file" id="upload-pfp" accept="image/*" style="display: none;">
+            <button onclick="document.getElementById('upload-pfp').click()" 
+                    style="margin: 15px auto; display: block; background: #45a29e; color: #0b0c10; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; font-family: 'Montserrat'; font-size: 0.8rem; transition: 0.3s;">
+              📷 GANTI FOTO
+            </button>
+            <h2 class="user-name" id="display-name">LOADING...</h2>
+            <div class="user-rank" id="display-rank">ROOKIE</div>
+            <hr style="border: 0; border-top: 1px solid #45a29e; margin: 20px 0;">
+            <div style="text-align: left; font-size: 0.85rem; line-height: 1.8;">
+                <p>📧 <span id="display-email">-</span></p>
+                <p>📅 JOINED: 2025</p>
+            </div>
+            <button onclick="logout()" style="background: #ff4444; color: white; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; font-family: 'Press Start 2P'; font-size: 0.7rem; width: 100%;">LOGOUT</button>
+        </aside>
 
+        <main class="dashboard-grid">
+            <div class="panel">
+                <div class="panel-header"><span>MISSION PROGRESS</span> <span id="course-count">0/0 FOUND</span></div>
+                <div id="course-list"><p style="color: gray;">Loading Course Data...</p></div>
+            </div>
 
-<!-- USERNAME -->
-<div class="username-wrapper">
-    <span id="usernameText">USERNAME</span>
-    <input type="text" id="usernameInput" maxlength="20">
-</div>
+            <div class="panel">
+                <div class="panel-header"><span>MEDALS & BADGES</span> <span id="badge-count">0 EARNED</span></div>
+                <div class="badge-grid" id="badge-list"><p style="color: gray; font-size: 0.9rem;">No badges earned yet.</p></div>
+            </div>
 
+            <div class="panel">
+                <div class="panel-header"><span>SYSTEM LOG</span> <span style="font-size: 0.8rem; color: #66fcf1;">LOCAL</span></div>
+                <div class="activity-log" id="activity-list"></div>
+            </div>
+        </main>
+    </div>
 
-    <button class="change-photo-btn" id="changePhotoBtn">
-        CHANGE PROFILE PHOTO
-    </button>
+    <footer><div class="footer-logo">CYBERLIB</div></footer>
 
-    <!-- LOG OUT -->
-    <p class="logout-text" id="logoutBtn">Log out</p>
+    <script src="../data/course_data.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            loadIdentity();
+            loadRealCourses();
+            loadBadgesAndLog();
+            setupUpload(); // Inisialisasi fungsi upload
+        });
 
-    <input 
-        type="file" 
-        id="photoInput" 
-        accept="image/*" 
-        style="display: none;"
-    >
-</div>
+        // --- FUNGSI UPLOAD FOTO PROFIL ---
+        function setupUpload() {
+            const uploadInput = document.getElementById('upload-pfp');
+            if (uploadInput) {
+                uploadInput.addEventListener('change', function() {
+                    const file = this.files[0];
+                    if (file) {
+                        // Validasi ukuran (Max 1MB)
+                        if (file.size > 1024 * 1024) {
+                            alert("Ukuran file terlalu besar! Gunakan gambar < 1MB.");
+                            return;
+                        }
 
-
-    </section>
-
-    <footer>
-        <div class="footer-logo">CYBERLIB</div>
-    </footer>
-<script>
-const changeBtn = document.getElementById("changePhotoBtn");
-const fileInput = document.getElementById("photoInput");
-const profilePreview = document.getElementById("profilePreview");
-const navbarIcon = document.querySelector(".profile-icon");
-
-// LOAD FOTO DARI SESSIONSTORAGE SAAT PAGE LOAD
-const savedPhoto = sessionStorage.getItem("profilePhoto");
-if (savedPhoto) {
-    profilePreview.style.backgroundImage = `url(${savedPhoto})`;
-    profilePreview.style.backgroundSize = "cover";
-    profilePreview.style.backgroundPosition = "center";
-
-    if (navbarIcon) {
-        navbarIcon.style.backgroundImage = `url(${savedPhoto})`;
-    }
-}
-
-// KLIK BUTTON → BUKA FILE PICKER
-changeBtn.addEventListener("click", () => {
-    fileInput.click();
-});
-
-// SAAT FILE DIPILIH
-fileInput.addEventListener("change", () => {
-    const file = fileInput.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-        const imageData = reader.result;
-
-        // Preview besar
-        profilePreview.style.backgroundImage = `url(${imageData})`;
-        profilePreview.style.backgroundSize = "cover";
-        profilePreview.style.backgroundPosition = "center";
-
-        // Icon navbar ikut berubah
-        if (navbarIcon) {
-            navbarIcon.style.backgroundImage = `url(${imageData})`;
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const result = e.target.result;
+                            
+                            // 1. Simpan ke LocalStorage
+                            localStorage.setItem('profilePhoto', result);
+                            
+                            // 2. Update Tampilan Langsung
+                            updateProfileDisplay(result);
+                            
+                            alert("Foto profil berhasil diperbarui!");
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
         }
 
-        // SIMPAN KE SESSIONSTORAGE
-        sessionStorage.setItem("profilePhoto", imageData);
-    };
+        function updateProfileDisplay(imgUrl) {
+            // Update Foto Besar
+            const pfpDisplay = document.getElementById('pfp-display');
+            if (pfpDisplay) pfpDisplay.style.backgroundImage = `url('${imgUrl}')`;
+            
+            // Update Icon Header
+            const headerIcon = document.querySelector('.profile-icon');
+            if (headerIcon) headerIcon.style.backgroundImage = `url('${imgUrl}')`;
+        }
 
-    reader.readAsDataURL(file);
-});
-</script>
-<script>
-const logoutBtn = document.getElementById("logoutBtn");
+        function loadIdentity() {
+            const username = localStorage.getItem('username') || "Guest User";
+            const email = localStorage.getItem('email') || "guest@cyberlib.local";
+            
+            // Ambil foto dari storage, atau pakai default
+            const savedPfp = localStorage.getItem('profilePhoto') || '../assets/pfp.jpg';
 
-logoutBtn.addEventListener("click", () => {
-    // bersihin data session (opsional tapi bagus)
-    sessionStorage.clear();
+            document.getElementById('display-name').textContent = username.toUpperCase();
+            document.getElementById('display-email').textContent = email;
+            
+            // Update tampilan saat load
+            updateProfileDisplay(savedPfp);
+        }
 
-    // pindah ke halaman sebelum login
-    window.location.href = "/index.html";
-});
-</script>
+        function loadRealCourses() {
+            const container = document.getElementById('course-list');
+            const countLabel = document.getElementById('course-count');
 
-<script>
-const usernameText = document.getElementById("usernameText");
-const usernameInput = document.getElementById("usernameInput");
+            if (typeof courses === 'undefined') {
+                container.innerHTML = '<p style="color:red;">Database Error</p>';
+                return;
+            }
 
-// AMBIL USERNAME DARI SESSION STORAGE
-const storedUsername = sessionStorage.getItem("username");
+            container.innerHTML = '';
+            let totalCourses = courses.length;
+            let totalProgress = 0;
 
-// Kalau ada username dari login/signup → tampilkan
-if (storedUsername) {
-    usernameText.textContent = storedUsername;
-}
+            courses.forEach(course => {
+                let savedProgress = localStorage.getItem(`progress_${course.title}`) || 0;
+                totalProgress += parseInt(savedProgress);
 
-// Klik username → edit
-usernameText.addEventListener("click", () => {
-    usernameInput.value = usernameText.textContent;
-    usernameText.style.display = "none";
-    usernameInput.style.display = "inline-block";
-    usernameInput.focus();
-});
+                container.innerHTML += `
+                    <div class="course-item">
+                        <div class="course-info">
+                            <span>${course.title}</span> <span style="color: #66fcf1;">${savedProgress}%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: ${savedProgress}%"></div>
+                        </div>
+                    </div>`;
+            });
 
-// Simpan username
-function saveUsername() {
-    const newName = usernameInput.value.trim();
-    if (!newName) return;
+            countLabel.textContent = `${totalCourses} COURSES FOUND`;
+            calculateRank(totalProgress, totalCourses);
+        }
 
-    usernameText.textContent = newName;
-    sessionStorage.setItem("username", newName);
+        function calculateRank(totalProgress, totalCourses) {
+            const avg = totalCourses > 0 ? (totalProgress / totalCourses) : 0;
+            const rankLabel = document.getElementById('display-rank');
+            if (avg >= 80) rankLabel.textContent = "LEVEL 5: NETRUNNER";
+            else if (avg >= 60) rankLabel.textContent = "LEVEL 4: ELITE";
+            else if (avg >= 40) rankLabel.textContent = "LEVEL 3: SPECIALIST";
+            else if (avg >= 20) rankLabel.textContent = "LEVEL 2: OPERATOR";
+            else rankLabel.textContent = "LEVEL 1: ROOKIE";
+        }
 
-    usernameInput.style.display = "none";
-    usernameText.style.display = "inline-block";
-}
+        function loadBadgesAndLog() {
+            const badgeContainer = document.getElementById('badge-list');
+            const badgeCount = document.getElementById('badge-count');
+            const logContainer = document.getElementById('activity-list');
+            
+            // 1. BADGES
+            const completedRaw = localStorage.getItem('completedQuizzes');
+            let completedQuizzes = [];
+            try { completedQuizzes = JSON.parse(completedRaw) || []; } catch(e) {}
 
-// Enter = simpan
-usernameInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") saveUsername();
-});
+            if (completedQuizzes.length > 0) {
+                badgeContainer.innerHTML = ''; 
+                badgeCount.textContent = `${completedQuizzes.length} EARNED`;
+                completedQuizzes.forEach((quizName, index) => {
+                    const icons = ["🛡️", "⚡", "💀", "🎓", "🔑"];
+                    const icon = icons[index % icons.length];
+                    badgeContainer.innerHTML += `
+                        <div class="badge" title="Completed: ${quizName}">
+                            <span class="badge-icon">${icon}</span>
+                            <div class="badge-name">${quizName}</div>
+                        </div>`;
+                });
+            }
 
-// Klik luar = simpan
-usernameInput.addEventListener("blur", saveUsername);
-</script>
+            // 2. SYSTEM LOG (LOGIKA BARU)
+            const savedLogs = JSON.parse(localStorage.getItem('userLogs')) || [];
+            logContainer.innerHTML = ''; 
 
+            // Log Login
+            const loginTime = new Date().toLocaleTimeString();
+            logContainer.innerHTML += `
+                <div class="log-item">
+                    <div class="log-date">[${loginTime}]</div>
+                    <div><span style="color:#fff; font-weight:bold;">[SYSTEM]</span> User session started.</div>
+                </div>`;
+
+            // Render Log Tersimpan
+            savedLogs.forEach(log => {
+                let color = "#fff";
+                if(log.type === "QUIZ") color = "#f0a500";
+                if(log.type === "THREAD") color = "#66fcf1";
+                if(log.type === "COMMENT") color = "#45a29e";
+
+                logContainer.innerHTML += `
+                    <div class="log-item">
+                        <div class="log-date">[${log.date}]</div>
+                        <div><span style="color:${color}; font-weight:bold;">[${log.type}]</span> ${log.msg}</div>
+                    </div>`;
+            });
+        }
+
+        function logout() {
+            if(confirm("Yakin ingin keluar?")) {
+                localStorage.removeItem('username');
+                window.location.href = "loginpage.html";
+            }
+        }
+    </script>
 </body>
 </html>

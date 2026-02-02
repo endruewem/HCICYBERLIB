@@ -9,9 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <link rel="stylesheet" href="/css/loginpage.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/loginpage.css">
 </head>
 <body>
 
@@ -24,14 +23,15 @@
         <nav>
             <ul>
                 <li><a href="/html/loginpage.html">Article</a></li>
+                <li><a href="/html/loginpage.html">Course</a></li>
                 <li><a href="/html/loginpage.html">Quiz</a></li>
                 <li><a href="/html/loginpage.html">Forum</a></li>
             </ul>
         </nav>
 
         <a href="/html/loginpage.html" class="login-link">
-    <button class="login-btn">LOGIN</button>
-</a>
+            <button class="login-btn">LOGIN</button>
+        </a>
     </header>
 
     <section class="hero login-page">
@@ -49,8 +49,8 @@
                 <p class="signup-link">Dont have an account? <a href="/html/signuppage.html">Sign up here!</a></p>
                 
                  <button type="submit" class="form-login-btn">
-    LOGIN
-</button>
+                    LOGIN
+                </button>
 
             </form>
         </div>
@@ -61,26 +61,27 @@
     </footer>
 
     <script>
-const loginForm = document.querySelector(".login-form");
+        const loginForm = document.querySelector(".login-form");
 
-loginForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // STOP reload
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Mencegah reload halaman
 
-    const username = document.getElementById("username").value.trim();
+            const username = document.getElementById("username").value.trim();
 
-    if (!username) {
-        alert("Username wajib diisi");
-        return;
-    }
+            if (!username) {
+                alert("Username wajib diisi");
+                return;
+            }
 
-    // SIMPAN USERNAME
-    sessionStorage.setItem("username", username);
+            // PERBAIKAN DI SINI: Gunakan localStorage (bukan sessionStorage)
+            // Agar data tersimpan permanen dan bisa dibaca halaman lain
+            localStorage.setItem("username", username);
 
-    // PINDAH KE MAIN PAGE
-    window.location.href = "/html/mainpage.html";
-});
-</script>
-
+            // Redirect ke halaman utama
+            // Pastikan path ini benar. Jika file ini ada di folder /html/, maka mainpage juga di folder yang sama.
+            window.location.href = "mainpage.html";
+        });
+    </script>
 
 </body>
 </html>
